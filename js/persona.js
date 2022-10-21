@@ -399,7 +399,8 @@ function comprobar_foto_persona_search(){
 function peticionADDpersonaBack(){
 
 	alert('peticion a back add');
-	document.getElementById('id_form_persona').submit();
+	ADDpersonaajax();
+	//document.getElementById('id_form_persona').submit();
 	
 }
 
@@ -408,7 +409,9 @@ function peticionADDpersonaBack(){
 function peticionEDITpersonaBack(){
 
 	alert('peticion a back edit');
-	document.getElementById('id_form_persona').submit();
+	EDITpersonaajax();
+	
+	//document.getElementById('id_form_persona').submit();
 	
 }
 
@@ -417,11 +420,20 @@ function peticionEDITpersonaBack(){
 function peticionDELETEpersonaBack(){
 
 	alert('peticion a back delete');
-	document.getElementById('id_form_persona').submit();
+	DELETEpersonaajax();
+	//document.getElementById('id_form_persona').submit();
 	
 }
 
+// peticionSEARCHpersonaBack()
+// funcion que utilizariamos para hacer una solicitud a back para buscar personas
+function peticionSEARCHpersonaBack(){
 
+	alert('peticion a back search');
+	SEARCHpersonaajax();
+	//document.getElementById('id_form_persona').submit();
+	
+}
 
 
 
@@ -466,9 +478,11 @@ function delete_persona(){
 // comprueba los formatos de atributo del formulario y devuelve true para que se invoque el action
 function search_persona(){
 
-	if (comprobar_form_persona_search()){
-		return true;
-	}
+	//if (comprobar_form_persona_search()){
+		peticionSEARCHpersonaBack();
+	//}else{
+	//	alert('search con campos incorrectos')
+	//}
 }
 
 // resetearformpersona()
@@ -695,6 +709,58 @@ function crearformEDITpersona(dni, nombre_persona, apellidos_persona, fechaNacim
 	$("#id_caja_formulario_persona").attr('style', 'display: block');
 }
 
+//Función ajax con promesas
+function personaEDITAjaxPromesa(){
+
+	crearformoculto('id_form_persona','');
+	insertacampo('id_form_persona','controlador', 'persona');
+	insertacampo('id_form_persona','action', 'EDIT');
+	
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#id_form_persona").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				reject(res);
+			}
+			else{
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	});
+}
+
+async function EDITpersonaajax() {
+	
+	var idioma = getCookie('lang');
+
+	await personaEDITAjaxPromesa()
+		.then((res) => {
+			
+			if (res.code = 'SQL_OK'){
+				res.code = 'edit_persona_OK';
+			}
+			mensajeOK(res.code);
+		})
+		.catch((res) => {
+			mensajeFAIL(res.code);
+		});
+
+		setLang();
+		document.getElementById('id_form_persona').remove();
+		document.getElementById('id_imagen_enviar_form').remove(); 
+}
+
+
+
+
+
+
 // crearformDELETEpersona() creado con jquery
 // Este formulario se crea usando la estructura básica del formulario html en gestionpersona.html  
 // Se crea una input image para actuar como un input submit y que el formulario 
@@ -745,6 +811,54 @@ function crearformDELETEpersona(dni, nombre_persona, apellidos_persona, fechaNac
 
 	$("#id_caja_formulario_persona").attr('style', 'display: block');
 }
+
+//Función ajax con promesas
+function personaDELETEAjaxPromesa(){
+
+	crearformoculto('id_form_persona','');
+	insertacampo('id_form_persona','controlador', 'persona');
+	insertacampo('id_form_persona','action', 'DELETE');
+	
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#id_form_persona").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				reject(res);
+			}
+			else{
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	});
+}
+
+async function DELETEpersonaajax() {
+	
+	var idioma = getCookie('lang');
+
+	await personaDELETEAjaxPromesa()
+		.then((res) => {
+			
+			if (res.code = 'SQL_OK'){
+				res.code = 'add_persona_OK';
+			}
+			mensajeOK(res.code);
+		})
+		.catch((res) => {
+			mensajeFAIL(res.code);
+		});
+
+		setLang();
+		document.getElementById('id_form_persona').remove();
+		document.getElementById('id_imagen_enviar_form').remove(); 
+}
+
 
 // crearformSEARCHpersona() creado con jquery (except el option que utiliza javascript)
 // Este formulario se crea usando la estructura básica del formulario html en gestionpersona.html
@@ -828,7 +942,52 @@ function crearformSEARCHpersona(){
 	$("#id_caja_formulario_persona").attr('style', 'display: block');
 }
 
+//Función ajax con promesas
+function personaSEARCHAjaxPromesa(){
 
+	crearformoculto('id_form_persona','');
+	insertacampo('id_form_persona','controlador', 'persona');
+	insertacampo('id_form_persona','action', 'SEARCH');
+	
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#id_form_persona").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				reject(res);
+			}
+			else{
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	});
+}
+
+async function SEARCHpersonaajax() {
+	
+	var idioma = getCookie('lang');
+
+	await personaSEARCHAjaxPromesa()
+		.then((res) => {
+			
+			if (res.code = 'SQL_OK'){
+				res.code = 'add_persona_OK';
+			}
+			mensajeOK(res.code);
+		})
+		.catch((res) => {
+			mensajeFAIL(res.code);
+		});
+
+		setLang();
+		document.getElementById('id_form_persona').remove();
+		document.getElementById('id_imagen_enviar_form').remove(); 
+}
 
 function crearformSHOWCURRENTpersona(dni, nombre_persona, apellidos_persona, fechaNacimiento_persona, direccion_persona, telefono_persona, email_persona, foto_persona){
 
@@ -912,7 +1071,7 @@ function getListPersonas(listapersonas){
 
 	//listapersonas = devolverpersonas();
 	//listapersonas = devolverpersonasajax();
-	alert(listapersonas);
+	
 	$("#id_datospersonas").html = '';
 
 	for (let persona of listapersonas){

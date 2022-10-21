@@ -667,9 +667,9 @@ async function devolverusuariosajax() {
 		document.getElementById('form_generico').remove();
 }
 
-function getListUsuarios(){
+function getListUsuarios(listausuarios){
 
-	listausuarios = devolverusuarios();
+	//listausuarios = devolverusuarios();
 	//listausuarios = devolverusuariosajax();
 	
 	$("#id_datosusuarios").html = '';
