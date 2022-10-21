@@ -26,6 +26,71 @@ function mensajeOK(idElemento){
 
 }
 
+/**Función para crear un formulario oculto*/
+function crearformoculto(name, action){
+
+	if ( $("#" + name).length == 0) {
+
+		var formu = document.createElement('form');
+		document.body.appendChild(formu);
+	    formu.name = name;
+	    formu.action = action; 
+	    formu.id = name;  
+	    formu.style.display = "none";
+
+	}
+
+}
+
+/**Función para insertar campos en el formulario a mayores*/
+function insertacampo(idform, name, value){
+	
+	formulario = document.getElementById(idform);
+	var input = document.createElement('input');
+	input.type = 'hidden';
+	input.name = name;
+	input.value = value;
+	input.className = name;
+	formulario.appendChild(input);
+
+}
+
+function mensajeactionOK(codigo){
+
+	//document.getElementById('id_texterror').innerHTML = codigo;
+	document.getElementById('id_texterror').classList.add(codigo);
+	document.getElementById('id_caja_error').style.borderColor = "#00e600"; 
+	document.getElementById('id_caja_error').style.display = 'block';
+	setLang();
+
+}
+
+function mensajeFAIL(codigoerror){
+
+	//document.getElementById('id_texterror').innerHTML = codigoerror;
+	document.getElementById('id_texterror').classList.add(codigoerror); 
+	document.getElementById('id_caja_error').style.display = 'block';
+	setLang();
+
+}
+
+/**Función para mostrar mensaje de error cuando fallan las peticiones ajax*/
+function mensajeHTTPFAIL(status){
+	var idioma = getCookie('lang');
+	
+	if (status === 500) {
+	mensajeFAIL("MENSAJE_ERROR_INTERNO");
+	} else if (status === 403) {
+	mensajeFAIL("ERROR_AUTENTICACION");
+	} else if (status === 0){
+	mensajeFAIL("ERR_CONNECTION_REFUSED");
+	}
+
+	setLang();
+}
+
+
+
 function cerrarMensajeError(){
 	document.getElementById('id_texterror').classList.remove;
 	//codigoanterior = document.getElementById('id_texterror').classList;

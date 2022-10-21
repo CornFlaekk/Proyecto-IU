@@ -908,11 +908,11 @@ async function devolverpersonasajax() {
 		document.getElementById('form_generico').remove();
 }
 
-function getListPersonas(){
+function getListPersonas(listapersonas){
 
-	listapersonas = devolverpersonas();
+	//listapersonas = devolverpersonas();
 	//listapersonas = devolverpersonasajax();
-	
+	alert(listapersonas);
 	$("#id_datospersonas").html = '';
 
 	for (let persona of listapersonas){
