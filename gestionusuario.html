@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Gestión Usuario</title>
+    <script type="text/javascript" src="./js/usuario.js"></script>
+    <script type="text/javascript" src="./lang/idioma.js"></script>
+    <script type="text/javascript" src="./lang/Lang_ES.js"></script>
+    <script type="text/javascript" src="./lang/Lang_EN.js"></script>
+    <script type="text/javascript" src="./lang/Lang_GA.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+  </head>
+  <body onload="ponerinvisibleerror();ponerinvisibleformusuario();getListUsuarios();setLang();">
+
+    <h1 class="pagina_usuario_wellcome"></h1>
+    <img class='foto_ES' src='./images/ES.png' height="30" width="30" onclick="setLang('ES');">
+    <img class='foto_EN' src='./images/EN.png' height="30" width="30" onclick="setLang('EN');">
+    <img class='foto_GA' src='./images/GA.png' height="30" width="30"  onclick="setLang('GA');"><br>
+    <div id='id_caja_error'>
+      <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20" onclick="cerrarMensajeError();"/>
+    </div>
+    <img class='titulo_add' src='./images/add4.png' height="80" width="80" onclick="crearformADDusuario();">
+    <img class='titulo_search' src='./images/search4.png' height="60" width="60" onclick="crearformSEARCHusuario();">
+    <div>
+      <table id='id_tablaUsuarios' border='1'>
+        <thead>    
+          <th class="dni">
+          </th>
+          <th class="usuario">
+          </th>
+          <th class="id_rol">
+          </th>
+          <th class="titulo_edit">
+          </th>
+          <th class="titulo_delete">
+          </th>
+          <th class="titulo_showcurrent">
+          </th>
+        </thead>
+        <tbody id='id_datosusuarios'>
+        </tbody>
+      </table>
+    </div>
+    <div id='id_caja_formulario_usuario'>
+      <form id='id_form_usuario' name='form_usuario' method='post'>
+
+        <label class='dni'></label>
+        <input class="text_formato_dni" type='text' id='id_dni' name='dni' placeholder=""></input>
+        <br>
+        <label class="usuario"></label>
+        <input class="text_formato_usuario" type='text' id='id_usuario' name='usuario'></input>
+        <br>
+        <div id="caja_select_rol"><label class="id_rol"></label></div>
+        
+      </form>
+      <br>
+        <img src='' height="80" width="80" id="id_imagen_enviar_form" name="imagen_enviar_form">
+    </div>
+  </body>
+</html>

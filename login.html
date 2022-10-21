@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>LOGIN</title>
+    <script type="text/javascript" src="./js/validacionLogin.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+  </head>
+  <body onload="ponerinvisibleerror();">
+
+    <h1>Página de login</h1>
+    <div id='id_caja_error'>
+      <div id='id_texterror'>adfafaf</div>
+    </div>
+    <form enctype= multipart/form-data id='id_form_login' name='form_login' action='http://193.147.87.202/procesaform.php' onsubmit='return comprobar_form_login();' method='post'>
+      <label>Login</label>
+      <input type='text' id='id_login' name='login' onblur='comprobar_login();'></input>
+      <br>
+      <label>Contraseña</label>
+      <input type='password' id='id_password' name='password' onblur='comprobar_password();'></input>
+      <br>
+      <label>Fichero</label>
+      <input type='file' name='fichero[]' multiple>
+      <br>
+      <input type='submit' value='enviar'>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Gestión Persona</title>
+    <script type="text/javascript" src="./js/persona.js"></script>
+    <script type="text/javascript" src="./js/devolverpersonas.js"></script>
+    <script type="text/javascript" src="./lang/idioma.js"></script>
+    <script type="text/javascript" src="./lang/Lang_ES.js"></script>
+    <script type="text/javascript" src="./lang/Lang_EN.js"></script>
+    <script type="text/javascript" src="./lang/Lang_GA.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+  </head>
+  <body onload="ponerinvisibleerror();ponerinvisibleformpersona();getListPersonas();setLang();">
+
+    <h1 class="pagina_persona_wellcome"></h1>
+    <img class='foto_ES' src='./images/ES.png' height="30" width="30" onclick="setLang('ES');">
+    <img class='foto_EN' src='./images/EN.png' height="30" width="30" onclick="setLang('EN');">
+    <img class='foto_GA' src='./images/GA.png' height="30" width="30"  onclick="setLang('GA');"><br>
+    <div id='id_caja_error'>
+      <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20" onclick="cerrarMensajeError();"/>
+    </div>
+    <img class='titulo_add' src='./images/add4.png' height="80" width="80" onclick="crearformADDpersona();">
+    <img class='titulo_search' src='./images/search4.png' height="60" width="60" onclick="crearformSEARCHpersona();">
+    <div>
+      <table id='id_tablaUsuarios' border='1'>
+        <thead>    
+          <th class="dni">
+          </th>
+          <th class="nombre_persona">
+          </th>
+          <th class="apellidos_persona">
+          </th>
+          <th class="fechaNacimiento_persona">
+          </th>
+          <th class="direccion_persona">
+          </th>
+          <th class="telefono_persona">
+          </th>
+          <th class="email_persona">
+          </th>
+          <th class="foto_persona">
+          </th>
+          <th class="titulo_edit">
+          </th>
+          <th class="titulo_delete">
+          </th>
+          <th class="titulo_showcurrent">
+          </th>
+        </thead>
+        <tbody id='id_datospersonas'>
+        </tbody>
+      </table>
+    </div>
+    <div id='id_caja_formulario_persona'>
+      <form id='id_form_persona' name='form_persona' method='post'>
+
+        <label class='dni'></label>
+        <input class="text_formato_dni" type='text' id='id_dni' name='dni' placeholder=""></input>
+        <br>
+        <label class="nombre_persona"></label>
+        <input class="text_formato_nombre_persona" type='text' id='id_nombre_persona' name='nombre_persona'></input>
+        <br>
+        <label class="apellidos_persona"></label>
+        <input class="text_formato_apellidos_persona" type='text' id='id_apellidos_persona' name='apellidos_persona'></input>
+        <br>
+        <label class="fechaNacimiento_persona"></label>
+        <input class="text_formato_fechaNacimiento_persona" type='date' id='id_fechaNacimiento_persona' name='fechaNacimiento_persona'></input>
+        <br>
+        <label class="direccion_persona"></label>
+        <input class="text_formato_direccion_persona" type='text' id='id_direccion_persona' name='direccion_persona'></input>
+        <br>
+        <label class="telefono_persona"></label>
+        <input class="text_formato_telefono_persona" type='text' id='id_telefono_persona' name='telefono_persona'></input>
+        <br>
+        <label class="email_persona"></label>
+        <input class="text_formato_email_persona" type='text' id='id_email_persona' name='email_persona'></input>
+        <br>
+        <label class="foto_persona"></label>
+        <input class="text_formato_foto_persona" type='text' id='id_foto_persona' name='foto_persona'></input>
+        <br>
+
+      </form>
+      <br>
+        <img src='' height="80" width="80" id="id_imagen_enviar_form" name="imagen_enviar_form">
+    </div>
+  </body>
+</html>
