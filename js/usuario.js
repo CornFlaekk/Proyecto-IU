@@ -4,7 +4,7 @@
 function comprobar_form_usuario_add(){
 	alert('entro en comprobar_form_usuario_add');
 
-	if (comprobar_dni() && comprobar_nombre_usuario() && comprobar_id_rol()){
+	if (comprobar_dni() && comprobar_usuario() && comprobar_id_rol()){
 		return true;
 	}
 	else{
@@ -37,7 +37,7 @@ function comprobar_usuario(){
 		mensajeKO('id_usuario', 'Tamaño login demasiado largo (max 45 caracteres)');
 		return false;
 	}
-	if (!letrassinacentoynumeros('id_usuario')){
+	if (!letras_sin_acento_y_numeros('id_usuario')){
 		mensajeKO('id_usuario', 'El login contiene carecteres no permitidos (solo letras sin acentos y números)');
 		return false;
 	}
@@ -54,7 +54,7 @@ function comprobar_usuario_search(){
 		mensajeKO('id_usuario', 'Tamaño login demasiado largo (max 45 caracteres)');
 		return false;
 	}
-	if (!letrassinacentoynumeros('id_usuario')){
+	if (!letras_sin_acento_y_numeros('id_usuario')){
 		mensajeKO('id_usuario', 'El login contiene carecteres no permitidos (solo letras sin acentos y números)');
 		return false;
 	}
@@ -167,7 +167,8 @@ function crearselect(id, name, valueoption, textoption, datos, itemseleccionado)
 function peticionADDusuarioBack(){
 
 	alert('peticion a back add');
-	document.getElementById('id_form_usuario').submit();
+	ADDusuarioajax();
+	//document.getElementById('id_form_usuario').submit();
 	
 }
 
@@ -185,6 +186,15 @@ function peticionEDITusuarioBack(){
 function peticionDELETEusuarioBack(){
 
 	alert('peticion a back delete');
+	document.getElementById('id_form_usuario').submit();
+	
+}
+
+// peticionEDITusuarioBack()
+// funcion que utilizariamos para hacer una solicitud a back para editar un usuario
+function peticionSEARCHusuarioBack(){
+
+	alert('peticion a back search');
 	document.getElementById('id_form_usuario').submit();
 	
 }
@@ -308,7 +318,7 @@ function delete_usuario(){
 function search_usuario(){
 
 	if (comprobar_form_usuario_search()){
-		return true;
+		peticionSEARCHusuarioBack();
 	}
 }
 
@@ -456,7 +466,7 @@ function crearformEDITusuario(dni, usuario, rol){
 	resetearformusuario();
 	
 	// se crea el action del formulario 
-	$("#id_form_usuario").attr('action','http://193.147.87.202/procesaform.php');
+	$("#id_form_usuario").attr('action','javascript:EDITusuarioajax()');
 	
 	// se pone no editable el dni al ser clave primaria y no querer que se modifique por el usuario
 	// se pone la funcion de comprobación aunque no sea necesaria y se pone el valor por defecto que se proporciona como parametro
@@ -493,6 +503,56 @@ function crearformEDITusuario(dni, usuario, rol){
 	$("#id_caja_formulario_usuario").attr('style', 'display: block');
 }
 
+
+
+//Función ajax con promesas
+function usuarioEDITAjaxPromesa(){
+
+	crearformoculto('id_form_usuario','');
+	insertacampo('id_form_usuario','controlador', 'usuario');
+	insertacampo('id_form_usuario','action', 'EDIT');
+	
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#id_form_usuario").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				reject(res);
+			}
+			else{
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	});
+}
+
+async function EDITusuarioajax() {
+	
+	var idioma = getCookie('lang');
+
+	await usuarioEDITAjaxPromesa()
+		.then((res) => {
+			
+			if (res.code = 'SQL_OK'){
+				res.code = 'edit_usuario_OK';
+			}
+			mensajeOK(res.code);
+		})
+		.catch((res) => {
+			mensajeFAIL(res.code);
+		});
+
+		setLang();
+		document.getElementById('id_form_usuario').remove();
+		document.getElementById('id_imagen_enviar_form').remove(); 
+}
+
+
 // crearformDELETEusuario() creado con jquery
 // Este formulario se crea usando la estructura básica del formulario html en gestionusuario.html  
 // Se crea una input image para actuar como un input submit y que el formulario 
@@ -503,7 +563,7 @@ function crearformDELETEusuario(dni, usuario, rol){
 
 	resetearformusuario();
 	
-	$("#id_form_usuario").attr('action','http://193.147.87.202/procesaform.php');
+	$("#id_form_usuario").attr('action','javascript:DELETEusuarioajax()');
 	
 	$("#id_dni").attr('readonly','true')
 	$("#id_dni").val(dni);
@@ -538,13 +598,61 @@ function crearformDELETEusuario(dni, usuario, rol){
 // Cuando esto pasa se llama a la funcion search_usuario en el onsubmit y se hace la comprobación de atributos
 // cuando esta función devuelve true se ejecuta el action
 
+//Función ajax con promesas
+function usuarioDELETEAjaxPromesa(){
+
+	crearformoculto('id_form_usuario','');
+	insertacampo('id_form_usuario','controlador', 'usuario');
+	insertacampo('id_form_usuario','action', 'DELETE');
+	
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#id_form_usuario").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				reject(res);
+			}
+			else{
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	});
+}
+
+async function DELETEusuarioajax() {
+	
+	var idioma = getCookie('lang');
+
+	await usuarioDELETEAjaxPromesa()
+		.then((res) => {
+			
+			if (res.code = 'SQL_OK'){
+				res.code = 'delete_usuario_OK';
+			}
+			mensajeOK(res.code);
+		})
+		.catch((res) => {
+			mensajeFAIL(res.code);
+		});
+
+		setLang();
+		document.getElementById('id_form_usuario').remove();
+		document.getElementById('id_imagen_enviar_form').remove(); 
+}
+
+
 function crearformSEARCHusuario(){
 
 	// reseteo el formulario
 	resetearformusuario();
 	
 	// creo la accion para el formulario y el onsubmit
-	$("#id_form_usuario").attr('action','http://193.147.87.202/procesaform.php');
+	$("#id_form_usuario").attr('action','javascript:SEARCHusuarioajax()');
 	$("#id_form_usuario").on('submit', search_usuario);
 	
 	// pongo el campo de dni editable y le asocio la funcion para el onblur
@@ -600,7 +708,52 @@ function crearformSEARCHusuario(){
 	$("#id_caja_formulario_usuario").attr('style', 'display: block');
 }
 
+//Función ajax con promesas
+function usuarioSEARCHAjaxPromesa(){
 
+	crearformoculto('id_form_usuario','');
+	insertacampo('id_form_usuario','controlador', 'usuario');
+	insertacampo('id_form_usuario','action', 'SEARCH');
+	
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#id_form_usuario").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				reject(res);
+			}
+			else{
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	});
+}
+
+async function SEARCHusuarioajax() {
+	
+	var idioma = getCookie('lang');
+
+	await usuarioSEARCHAjaxPromesa()
+		.then((res) => {
+			
+			if (res.code = 'SQL_OK'){
+				res.code = 'search_usuario_OK';
+			}
+			mensajeOK(res.code);
+		})
+		.catch((res) => {
+			mensajeFAIL(res.code);
+		});
+
+		setLang();
+		document.getElementById('id_form_usuario').remove();
+		//document.getElementById('botonsubmit').remove(); 
+}
 
 function crearformSHOWCURRENTusuario(dni, usuario, rol){
 

@@ -846,7 +846,7 @@ async function DELETEpersonaajax() {
 		.then((res) => {
 			
 			if (res.code = 'SQL_OK'){
-				res.code = 'add_persona_OK';
+				res.code = 'delete_persona_OK';
 			}
 			mensajeOK(res.code);
 		})
@@ -872,7 +872,7 @@ function crearformSEARCHpersona(){
 	resetearformpersona();
 	
 	// creo la accion para el formulario y el onsubmit
-	$("#id_form_persona").attr('action','http://193.147.87.202/procesaform.php');
+	//$("#id_form_persona").attr('action','http://193.147.87.202/procesaform.php');
 	$("#id_form_persona").on('submit', search_persona);
 	
 	// pongo el campo de dni editable y le asocio la funcion para el onblur
@@ -976,7 +976,7 @@ async function SEARCHpersonaajax() {
 		.then((res) => {
 			
 			if (res.code = 'SQL_OK'){
-				res.code = 'add_persona_OK';
+				res.code = 'search_persona_OK';
 			}
 			mensajeOK(res.code);
 		})
@@ -986,7 +986,7 @@ async function SEARCHpersonaajax() {
 
 		setLang();
 		document.getElementById('id_form_persona').remove();
-		document.getElementById('id_imagen_enviar_form').remove(); 
+		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
 function crearformSHOWCURRENTpersona(dni, nombre_persona, apellidos_persona, fechaNacimiento_persona, direccion_persona, telefono_persona, email_persona, foto_persona){
