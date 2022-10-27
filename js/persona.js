@@ -483,7 +483,7 @@ function delete_persona(){
 function search_persona(){
 
 	//if (comprobar_form_persona_search()){
-		comprobar_form_persona_search();
+		//comprobar_form_persona_search();
 		peticionSEARCHpersonaBack();
 	//}else{
 	//	alert('search con campos incorrectos')
@@ -922,24 +922,28 @@ function crearformSEARCHpersona(){
 
 		
 	//eliminamos la imagen que utilizamos en las otras acciones para poder hacer un submit con el formulario
-	$("#id_imagen_enviar_form").remove();
+	//$("#id_imagen_enviar_form").remove();
+	//$("#id_boton_buscar_persona").on('click', search_persona);
 
-	accionsubmit = document.createElement("button");
-	accionsubmit.type = 'submit';
-	accionsubmit.id = 'id_accionsubmit';
+	//accionsubmit = document.createElement("button");
+	//accionsubmit.type = 'submit';
+	//accionsubmit.id = 'id_accionsubmit';
 
 	//creo un input de tipo image que el formulario va utilizar como si fuese un tipo input submit
-	botonsubmit = document.createElement("input");
-	botonsubmit.type = 'image';
+	botonsubmit = document.createElement("img");
+	//botonsubmit.type = 'image';
 	botonsubmit.id = "id_boton_buscar_persona";
-	botonsubmit.title= "Buscar";
-	botonsubmit.alt= "Buscar";
+	botonsubmit.className = 'titulo_search';
+	//botonsubmit.title= "Buscar";
+	//botonsubmit.alt= "Buscar";
 	botonsubmit.src= "./images/search4.png";
 	botonsubmit.width = '80';
 	botonsubmit.height = '80';
-	
+	document.body.appendChild(botonsubmit);
+
 	// coloco la imagen para submit en el formulario
-	$("#id_form_persona").append(botonsubmit);
+	$("#id_boton_buscar_persona").on('click', search_persona);
+	//$("#id_form_persona").append(botonsubmit);
 
 	setLang(); 
 
@@ -947,8 +951,124 @@ function crearformSEARCHpersona(){
 	$("#id_caja_formulario_persona").attr('style', 'display: block');
 }
 
+
+
+function crearformSEARCHpersonaPIT(){
+
+	// reseteo el formulario
+	resetearformpersona();
+	
+	// creo la accion para el formulario y el onsubmit
+	//$("#id_form_persona").attr('action','http://193.147.87.202/procesaform.php');
+	$("#id_form_persona").on('submit', search_persona);
+	
+	$("#id_dni").attr('readonly',false);
+	//$("#id_dni").blur(comprobar_dni);
+	$("#id_dni").val('');
+
+	$("#id_nombre_persona").attr('readonly', false);
+	$("#id_nombre_persona").val('');
+
+	$("#id_apellidos_persona").attr('readonly', false);
+	$("#id_apellidos_persona").val('');
+
+	$("#id_fechaNacimiento_persona").attr('readonly', false);
+	$("#id_fechaNacimiento_persona").val('');
+
+	$("#id_direccion_persona").attr('readonly', false);
+	$("#id_direccion_persona").val('');
+
+	$("#id_telefono_persona").attr('readonly', false);
+	$("#id_telefono_persona").val('');
+
+	$("#id_email_persona").attr('readonly', false);
+	$("#id_email_persona").val('');
+
+	$("#id_foto_persona").attr('readonly', false);
+	$("#id_foto_persona").val('');
+
+
+	//accionsubmit = document.createElement("button");
+	//accionsubmit.type = 'submit';
+	//accionsubmit.id = 'id_accionsubmit';
+
+	// coloco la imagen para submit en el formulario
+	//$("#id_form_persona").append(accionsubmit);
+	
+	//creo un input de tipo image que el formulario va utilizar como si fuese un tipo input submit
+	botonsubmit = document.createElement("img");
+	botonsubmit.id = "id_boton_buscar_persona";
+	botonsubmit.className = 'titulo_search';
+	botonsubmit.src= "./images/search4.png";
+	botonsubmit.width = '80';
+	botonsubmit.height = '80';
+	document.body.appendChild(botonsubmit);
+	// se coloca una función onclick que hará las comprobaciones y el submit
+	$("#id_boton_buscar_persona").on('click', search_persona);
+	//$("#id_accionsubmit").append(botonsubmit);
+
+	setLang();
+
+	// se pone visible el formulario
+	$("#id_caja_formulario_persona").attr('style', 'display: block');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Función ajax con promesas
 function personaSEARCHAjaxPromesa(){
+
+	crearformoculto('form_generico','');
+	insertacampo('form_generico','controlador', 'persona');
+	insertacampo('form_generico','action', 'SEARCH');
+	insertacampo('form_generico','dni', document.getElementById('id_dni').value);
+	insertacampo('form_generico','nombre_persona', document.getElementById('id_nombre_persona').value);
+	insertacampo('form_generico','apellidos_persona', document.getElementById('id_apellidos_persona').value);
+	insertacampo('form_generico','fechaNacimiento_persona', document.getElementById('id_fechaNacimiento_persona').value);
+	insertacampo('form_generico','direccion_persona', document.getElementById('id_direccion_persona').value);
+	insertacampo('form_generico','telefono_persona', document.getElementById('id_telefono_persona').value);
+	insertacampo('form_generico','email_persona', document.getElementById('id_email_persona').value);
+	alert(2);
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#form_generico").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				alert('res.ok != true');
+				reject(res);
+			}
+			else{
+				alert('res.ok == true');
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			alert('fail!!!:' + jqXHR.status);
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	}
+	)
+}
+
+function personaSEARCHAjaxPromesa2(){
 	//texto = document.getElementById('id_form_persona').dni.value;
 	if(document.getElementById('id_form_persona').dni.value == null){
 		alert('NULL');
@@ -983,22 +1103,23 @@ function personaSEARCHAjaxPromesa(){
 async function SEARCHpersonaajax() {
 	
 	var idioma = getCookie('lang');
-
+	alert('1');
 	await personaSEARCHAjaxPromesa()
 		.then((res) => {
 			
-			if (res.code = 'SQL_OK'){
-				res.code = 'search_persona_OK';
-			}
+			//if (res.code = 'SQL_OK'){
+			//	res.code = 'search_persona_OK';	}
+			alert('.then');
 			getListPersonas(res.resource);
-			mensajeOK(res.code);
+			//mensajeOK(res.code);
 		})
 		.catch((res) => {
+			alert('.catch');
 			mensajeFAIL(res.code);
 		});
-
+		alert('fin');
 		setLang();
-		document.getElementById('id_form_persona').remove();
+		document.getElementById('form_generico').remove();
 		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
@@ -1081,12 +1202,12 @@ async function devolverpersonasajax() {
 }
 
 function getListPersonas(listapersonas){
-
+	
 	//listapersonas = devolverpersonas();
 	//listapersonas = devolverpersonasajax();
 	
 	$("#id_datospersonas").html = '';
-	
+	document.getElementById('id_datospersonas').innerHTML= '';
 	for (let persona of listapersonas){
 
 		datosfila = "'"+persona.dni+"',"+"'"+persona.nombre_persona+"',"+"'"+persona.apellidos_persona+"',"+"'"+persona.fechaNacimiento_persona+
