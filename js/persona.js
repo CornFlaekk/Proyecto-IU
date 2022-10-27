@@ -17,7 +17,7 @@ function comprobar_form_persona_add(){
 // funcion para validar el submit del formulario de persona para la accion search
 function comprobar_form_persona_search(){
 	alert('entro en comprobar_form_persona_search');
-
+	
 	if (comprobar_dni_search() && comprobar_nombre_persona_search() && comprobar_apellidos_persona_search() && comprobar_fechaNacimiento_persona_search() && 
 		comprobar_direccion_persona_search() && comprobar_telefono_persona_search() && comprobar_email_persona_search() && comprobar_foto_persona_search()){
 		return true;
@@ -30,7 +30,7 @@ function comprobar_form_persona_search(){
 // comprobar_dni()
 // funcion de validación de formato de dni en acciones que no sean search
 function comprobar_dni(){
-
+	
 	if(!size_minimo('id_dni',9)){
 		mensajeKO('id_dni', 'Tamaño del dni demasiado corto (8 Números y 1 Letra)');
 		return false;
@@ -66,6 +66,10 @@ function comprobar_dni(){
 // comprobar_dni_search()
 // funcion de validación de formato de dni en search
 function comprobar_dni_search(){
+	dni = document.getElementById('id_dni').value;
+	if(dni == null){
+		document.getElementById('id_form_persona').removeAttribute('id_dni');
+	}
 	if(!size_maximo('id_dni',9)){
 		mensajeKO('id_dni', 'Tamaño del dni demasiado largo (8 Números Y 1 Letra)');
 		return false;
@@ -428,7 +432,7 @@ function peticionDELETEpersonaBack(){
 // peticionSEARCHpersonaBack()
 // funcion que utilizariamos para hacer una solicitud a back para buscar personas
 function peticionSEARCHpersonaBack(){
-
+	
 	alert('peticion a back search');
 	SEARCHpersonaajax();
 	//document.getElementById('id_form_persona').submit();
@@ -479,6 +483,7 @@ function delete_persona(){
 function search_persona(){
 
 	//if (comprobar_form_persona_search()){
+		comprobar_form_persona_search();
 		peticionSEARCHpersonaBack();
 	//}else{
 	//	alert('search con campos incorrectos')
@@ -711,7 +716,7 @@ function crearformEDITpersona(dni, nombre_persona, apellidos_persona, fechaNacim
 
 //Función ajax con promesas
 function personaEDITAjaxPromesa(){
-
+	
 	crearformoculto('id_form_persona','');
 	insertacampo('id_form_persona','controlador', 'persona');
 	insertacampo('id_form_persona','action', 'EDIT');
@@ -944,8 +949,15 @@ function crearformSEARCHpersona(){
 
 //Función ajax con promesas
 function personaSEARCHAjaxPromesa(){
-
-	crearformoculto('id_form_persona','');
+	//texto = document.getElementById('id_form_persona').dni.value;
+	if(document.getElementById('id_form_persona').dni.value == null){
+		alert('NULL');
+	}
+	if(document.getElementById('id_form_persona').dni.value = ''){
+		alert('Vacío');
+	}
+	//alert(texto);
+	//crearformoculto('id_form_persona','');
 	insertacampo('id_form_persona','controlador', 'persona');
 	insertacampo('id_form_persona','action', 'SEARCH');
 	
@@ -978,6 +990,7 @@ async function SEARCHpersonaajax() {
 			if (res.code = 'SQL_OK'){
 				res.code = 'search_persona_OK';
 			}
+			getListPersonas(res.resource);
 			mensajeOK(res.code);
 		})
 		.catch((res) => {
@@ -1073,7 +1086,7 @@ function getListPersonas(listapersonas){
 	//listapersonas = devolverpersonasajax();
 	
 	$("#id_datospersonas").html = '';
-
+	
 	for (let persona of listapersonas){
 
 		datosfila = "'"+persona.dni+"',"+"'"+persona.nombre_persona+"',"+"'"+persona.apellidos_persona+"',"+"'"+persona.fechaNacimiento_persona+

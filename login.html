@@ -3,25 +3,29 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>LOGIN</title>
-    <script type="text/javascript" src="./js/validacionLogin.js"></script>
-    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script type="text/javascript" src="./js/Login.js"></script>
     <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="./lang/idioma.js"></script>
+    <script type="text/javascript" src="./lang/Lang_ES.js"></script>
+    <script type="text/javascript" src="./lang/Lang_EN.js"></script>
+    <script type="text/javascript" src="./lang/Lang_GA.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
   </head>
-  <body onload="ponerinvisibleerror();">
-
-    <h1>Página de login</h1>
-    <div id='id_caja_error'>
-      <div id='id_texterror'>adfafaf</div>
+  <body onload="incluircabecera();ponerinvisibleerror();setLang();">
+    <div id='id_caja_superior'>
     </div>
-    <form enctype= multipart/form-data id='id_form_login' name='form_login' action='http://193.147.87.202/procesaform.php' onsubmit='return comprobar_form_login();' method='post'>
-      <label>Login</label>
-      <input type='text' id='id_login' name='login' onblur='comprobar_login();'></input>
+    <h1 class="pagina_login_wellcome"></h1>
+    
+     <div id='id_caja_error'>
+      <div id='id_texterror'></div><img src="./images/cerrar.png" width="50" height="50" onclick="cerrarMensajeKO();"/>
+    </div>
+    <form id='id_form_login' name='form_login' action='javascript:login();' onsubmit='return comprobar_form_login();' method='post'>
+      <label for="usuario"></label>
+      <input type='text' id='id_usuario' name='usuario' onblur='comprobar_usuario();'></input>
       <br>
-      <label>Contraseña</label>
-      <input type='password' id='id_password' name='password' onblur='comprobar_password();'></input>
-      <br>
-      <label>Fichero</label>
-      <input type='file' name='fichero[]' multiple>
+      <label class="contrasena"></label>
+      <input type='password' id='id_contrasena' name='contrasena' onblur='comprobar_contrasena();'></input>
       <br>
       <input type='submit' value='enviar'>
     </form>

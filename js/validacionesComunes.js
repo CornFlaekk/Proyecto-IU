@@ -1,3 +1,54 @@
+function deleteAllCookies() {
+	var cookies = document.cookie.split(";");
+    	for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        setCookie(name, '');
+    }
+ }
+
+function desconectar(){
+	deleteAllCookies();
+	window.location.href = "login.html";
+}
+
+function incluircabecera(){
+
+	$("#id_caja_superior").html = "";
+	let incluir = '<img class="foto_ES" src="./images/ES.png" height="30" width="30" onclick="setLang("ES");">'+
+    	'<img class="foto_EN" src="./images/EN.png" height="30" width="30" onclick="setLang("EN");">'+
+    	'<img class="foto_GA" src="./images/GA.png" height="30" width="30"  onclick="setLang("GA");"><br>'
+      
+      if (getCookie('usuarioSistema')!=null){
+      	let temp = "Usuario :"+getCookie('usuarioSistema');
+      	incluir += temp+"<br><a href='javascript:desconectar();'>Desconectar</a>";
+      }
+
+    $("#id_caja_superior").append(incluir);
+
+}
+
+function incluircabecera2(){
+
+	$("#id_caja_superior").html = "";
+	let incluir = "<table id='id_tabla_idiomas'>"+
+        "<tr>"+
+          "<td onclick=\"setLang(\'ES\');\">ES</td>"+
+          "<td onclick=\"setLang(\'EN\');\">EN</td>"+
+          "<td onclick=\"setLang(\'GA\');\">GA</td>"+
+        "</tr>"+
+      "</table>";
+      
+      if (getCookie('usuarioSistema')===null){
+      	let temp = "Usuario :"+getCookie('usuarioSistema');
+      	incluir += temp+"<br><a href='javascript:desconectar();'>Desconectar</a>";
+      }
+
+    $("#id_caja_superior").append(incluir);
+
+}
+
 function ponerinvisibleerror(){
 	document.getElementById('id_caja_error').style.display='none';
 }

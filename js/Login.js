@@ -1,25 +1,25 @@
-function comprobar_form_login(){
-	if (comprobar_usuario() && comprobar_contrasena()){
+function comprobar_form_login() {
+	if (comprobar_usuario() && comprobar_contrasena()) {
 		encriptarpassword();
 		return true;
 	}
-	else{
+	else {
 		return false;
 	}
-	
+
 }
 
-function comprobar_usuario(){
+function comprobar_usuario() {
 
-	if (!size_minimo('id_usuario',3)){
+	if (!size_minimo('id_usuario', 3)) {
 		mensajeKO('id_usuario', 'usuario_corto_ko');
 		return false;
 	}
-	if (!size_maximo('id_usuario',15)){
+	if (!size_maximo('id_usuario', 15)) {
 		mensajeKO('id_usuario', 'usuario_largo_ko');
 		return false;
 	}
-	if (!letrassinacentoynumeros('id_usuario')){
+	if (!letras_sin_acento_y_numeros('id_usuario')) {
 		mensajeKO('id_usuario', 'usuario_formato_ko');
 		return false;
 	}
@@ -29,17 +29,17 @@ function comprobar_usuario(){
 
 }
 
-function comprobar_contrasena(){
+function comprobar_contrasena() {
 
-	if (!size_minimo('id_contrasena',3)){
+	if (!size_minimo('id_contrasena', 3)) {
 		mensajeKO('id_contrasena', 'contrasena_corto_ko');
 		return false;
 	}
-	if (!size_maximo('id_contrasena',15)){
+	if (!size_maximo('id_contrasena', 15)) {
 		mensajeKO('id_contrasena', 'contrasena_largo_ko');
 		return false;
 	}
-	if (!letrassinacentoynumeros('id_contrasena')){
+	if (!letras_sin_acento_y_numeros('id_contrasena')) {
 		mensajeKO('id_contrasena', 'contrasena_formato_ko');
 		return false;
 	}
@@ -50,12 +50,12 @@ function comprobar_contrasena(){
 }
 
 //Función ajax con promesas
-function loginAjaxPromesa(){
+function loginAjaxPromesa() {
 
-	insertacampo('id_form_login','controlador', 'AUTH');
-	insertacampo('id_form_login','action', 'LOGIN');
-	
-	return new Promise(function(resolve, reject) {
+	insertacampo('id_form_login', 'controlador', 'AUTH');
+	insertacampo('id_form_login', 'action', 'LOGIN');
+
+	return new Promise(function (resolve, reject) {
 		$.ajax({
 			method: "POST",
 			url: "http://193.147.87.202/Back/index.php",
@@ -64,18 +64,18 @@ function loginAjaxPromesa(){
 			if (res.code != 'LOGIN_OK') {
 				reject(res);
 			}
-			else{
+			else {
 				resolve(res);
 			}
 		})
-		.fail( function( jqXHR ) {
-			mensajeFAIL(jqXHR.status);
-		});
+			.fail(function (jqXHR) {
+				mensajeFAIL(jqXHR.status);
+			});
 	});
 }
 
 async function login() {
-	
+
 	var idioma = getCookie('lang');
 
 	await loginAjaxPromesa()
@@ -86,12 +86,23 @@ async function login() {
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
-	    	//eliminarcampo('controlador');
-	    	//eliminarcampo('action');
-        	setLang(idioma);
+			//eliminarcampo('controlador');
+			//eliminarcampo('action');
+			setLang(idioma);
 		});
-	
+
 }
 
+async function checkCookieLogin() {
+
+	//var idioma = getCookie('lang');
+	var token = getCookie('token');
+	if (token == null) {
+		window.location.replace("./login.html");
+	}
+	else {
+		window.location.replace("./menu.html");
+	}
+};
 
 
