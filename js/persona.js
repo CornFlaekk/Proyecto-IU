@@ -630,12 +630,11 @@ async function ADDpersonaajax() {
 
 	await personaADDAjaxPromesa()
 		.then((res) => {
-			
+			devolverpersonasajax();
 			if (res.code = 'SQL_OK'){
 				res.code = 'add_persona_OK';
 			}
 			mensajeOK(res.code);
-			devolverpersonasajax();
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
@@ -852,7 +851,7 @@ async function DELETEpersonaajax() {
 
 	await personaDELETEAjaxPromesa()
 		.then((res) => {
-			
+			devolverpersonasajax();
 			if (res.code = 'SQL_OK'){
 				res.code = 'delete_persona_OK';
 			}
@@ -1102,7 +1101,7 @@ function getListPersonas(listapersonas){
 	
 	//$("#id_datospersonas").html = '';
 	document.getElementById('id_datospersonas').innerHTML= '';
-	alert('tbody vacío');
+
 	for (let persona of listapersonas){
 
 		datosfila = "'"+persona.dni+"',"+"'"+persona.nombre_persona+"',"+"'"+persona.apellidos_persona+"',"+"'"+persona.fechaNacimiento_persona+

@@ -16,14 +16,22 @@ function desconectar(){
 function incluircabecera(){
 
 	$("#id_caja_superior").html = "";
-	let incluir = '<img class="foto_ES" src="./images/ES.png" height="30" width="30" onclick="setLang("ES");">'+
-    	'<img class="foto_EN" src="./images/EN.png" height="30" width="30" onclick="setLang("EN");">'+
-    	'<img class="foto_GA" src="./images/GA.png" height="30" width="30"  onclick="setLang("GA");"><br>'
-      
-      if (getCookie('usuarioSistema')!=null){
-      	let temp = "Usuario :"+getCookie('usuarioSistema');
-      	incluir += temp+"<br><a href='javascript:desconectar();'>Desconectar</a>";
-      }
+	let incluir = '<img class=\"foto_ES\" src=\"./images/ES.png\" height=\"30\" width=\"30\" onclick=\"setLang(\'ES\');\">'+
+    	'<img class=\"foto_EN\" src=\"./images/EN.png\" height=\"30\" width=\"30\" onclick=\"setLang(\'EN\');\">'+
+    	'<img class=\"foto_GA\" src=\"./images/GA.png\" height=\"30\" width=\"30\"  onclick=\"setLang(\'GA\');\"><br>'
+	
+		if ((getCookie('usuarioSistema')==null) || (getCookie('usuarioSistema') =='')){
+
+			cadena = /login*/;
+			encontrado = cadena.test(window.location.href);
+			if(!encontrado){
+			window.location.href = "login.html";
+			}
+			
+		}else{
+			let temp = "Usuario :"+getCookie('usuarioSistema');
+			incluir += temp+"<br><a href='javascript:desconectar();'>Desconectar</a>";
+		}
 
     $("#id_caja_superior").append(incluir);
 
@@ -78,21 +86,7 @@ function mensajeOK(idElemento){
 }
 
 /**Función para crear un formulario oculto*/
-function crearformoculto2(name, action){
 
-	if ( $("#" + name).length > 0) {
-		$("#" + name).remove();
-	}
-		var formu = document.createElement('form');
-		document.body.appendChild(formu);
-	    formu.name = name;
-	    formu.action = action; 
-	    formu.id = name;  
-	    formu.style.display = "none";
-
-	 
-
-}
 
 function crearformoculto(name, action){
 
