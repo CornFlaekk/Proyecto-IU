@@ -78,6 +78,22 @@ function mensajeOK(idElemento){
 }
 
 /**Función para crear un formulario oculto*/
+function crearformoculto2(name, action){
+
+	if ( $("#" + name).length > 0) {
+		$("#" + name).remove();
+	}
+		var formu = document.createElement('form');
+		document.body.appendChild(formu);
+	    formu.name = name;
+	    formu.action = action; 
+	    formu.id = name;  
+	    formu.style.display = "none";
+
+	 
+
+}
+
 function crearformoculto(name, action){
 
 	if ( $("#" + name).length == 0) {
@@ -89,7 +105,7 @@ function crearformoculto(name, action){
 	    formu.id = name;  
 	    formu.style.display = "none";
 
-	}
+	} 
 
 }
 

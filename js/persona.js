@@ -464,6 +464,7 @@ function edit_persona(){
 	if (comprobar_form_persona_add()){
 		peticionEDITpersonaBack();
 	}
+	//devolverpersonasajax();
 
 }
 
@@ -474,7 +475,6 @@ function edit_persona(){
 function delete_persona(){
 
 	peticionDELETEpersonaBack();
-
 }
 
 // search_persona()
@@ -635,6 +635,7 @@ async function ADDpersonaajax() {
 				res.code = 'add_persona_OK';
 			}
 			mensajeOK(res.code);
+			devolverpersonasajax();
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
@@ -643,6 +644,7 @@ async function ADDpersonaajax() {
 		setLang();
 		document.getElementById('id_form_persona').remove();
 		document.getElementById('id_imagen_enviar_form').remove(); 
+
 }
 
 
@@ -746,11 +748,12 @@ async function EDITpersonaajax() {
 
 	await personaEDITAjaxPromesa()
 		.then((res) => {
-			
+			devolverpersonasajax();
 			if (res.code = 'SQL_OK'){
 				res.code = 'edit_persona_OK';
 			}
 			mensajeOK(res.code);
+			//devolverpersonasajax();
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
@@ -953,84 +956,6 @@ function crearformSEARCHpersona(){
 
 
 
-function crearformSEARCHpersonaPIT(){
-
-	// reseteo el formulario
-	resetearformpersona();
-	
-	// creo la accion para el formulario y el onsubmit
-	//$("#id_form_persona").attr('action','http://193.147.87.202/procesaform.php');
-	$("#id_form_persona").on('submit', search_persona);
-	
-	$("#id_dni").attr('readonly',false);
-	//$("#id_dni").blur(comprobar_dni);
-	$("#id_dni").val('');
-
-	$("#id_nombre_persona").attr('readonly', false);
-	$("#id_nombre_persona").val('');
-
-	$("#id_apellidos_persona").attr('readonly', false);
-	$("#id_apellidos_persona").val('');
-
-	$("#id_fechaNacimiento_persona").attr('readonly', false);
-	$("#id_fechaNacimiento_persona").val('');
-
-	$("#id_direccion_persona").attr('readonly', false);
-	$("#id_direccion_persona").val('');
-
-	$("#id_telefono_persona").attr('readonly', false);
-	$("#id_telefono_persona").val('');
-
-	$("#id_email_persona").attr('readonly', false);
-	$("#id_email_persona").val('');
-
-	$("#id_foto_persona").attr('readonly', false);
-	$("#id_foto_persona").val('');
-
-
-	//accionsubmit = document.createElement("button");
-	//accionsubmit.type = 'submit';
-	//accionsubmit.id = 'id_accionsubmit';
-
-	// coloco la imagen para submit en el formulario
-	//$("#id_form_persona").append(accionsubmit);
-	
-	//creo un input de tipo image que el formulario va utilizar como si fuese un tipo input submit
-	botonsubmit = document.createElement("img");
-	botonsubmit.id = "id_boton_buscar_persona";
-	botonsubmit.className = 'titulo_search';
-	botonsubmit.src= "./images/search4.png";
-	botonsubmit.width = '80';
-	botonsubmit.height = '80';
-	document.body.appendChild(botonsubmit);
-	// se coloca una función onclick que hará las comprobaciones y el submit
-	$("#id_boton_buscar_persona").on('click', search_persona);
-	//$("#id_accionsubmit").append(botonsubmit);
-
-	setLang();
-
-	// se pone visible el formulario
-	$("#id_caja_formulario_persona").attr('style', 'display: block');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Función ajax con promesas
 function personaSEARCHAjaxPromesa(){
 
@@ -1044,7 +969,6 @@ function personaSEARCHAjaxPromesa(){
 	insertacampo('form_generico','direccion_persona', document.getElementById('id_direccion_persona').value);
 	insertacampo('form_generico','telefono_persona', document.getElementById('id_telefono_persona').value);
 	insertacampo('form_generico','email_persona', document.getElementById('id_email_persona').value);
-	alert(2);
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			method: "POST",
@@ -1068,48 +992,16 @@ function personaSEARCHAjaxPromesa(){
 	)
 }
 
-function personaSEARCHAjaxPromesa2(){
-	//texto = document.getElementById('id_form_persona').dni.value;
-	if(document.getElementById('id_form_persona').dni.value == null){
-		alert('NULL');
-	}
-	if(document.getElementById('id_form_persona').dni.value = ''){
-		alert('Vacío');
-	}
-	//alert(texto);
-	//crearformoculto('id_form_persona','');
-	insertacampo('id_form_persona','controlador', 'persona');
-	insertacampo('id_form_persona','action', 'SEARCH');
-	
-	return new Promise(function(resolve, reject) {
-		$.ajax({
-			method: "POST",
-			url: "http://193.147.87.202/Back/index.php",
-			data: $("#id_form_persona").serialize(),
-		}).done(res => {
-			if (res.ok != true) {
-				reject(res);
-			}
-			else{
-				resolve(res);
-			}
-		})
-		.fail( function( jqXHR ) {
-			mensajeHTTPFAIL(jqXHR.status);
-		});
-	});
-}
 
 async function SEARCHpersonaajax() {
 	
 	var idioma = getCookie('lang');
-	alert('1');
+	
 	await personaSEARCHAjaxPromesa()
 		.then((res) => {
 			
-			//if (res.code = 'SQL_OK'){
-			//	res.code = 'search_persona_OK';	}
-			alert('.then');
+			if (res.code = 'SQL_OK'){
+				res.code = 'search_persona_OK';	}
 			getListPersonas(res.resource);
 			//mensajeOK(res.code);
 		})
@@ -1117,9 +1009,10 @@ async function SEARCHpersonaajax() {
 			alert('.catch');
 			mensajeFAIL(res.code);
 		});
-		alert('fin');
 		setLang();
 		document.getElementById('form_generico').remove();
+		//document.getElementById('id_imagen_enviar_form').remove(); 
+		//document.getElementById('id_form_persona').remove();
 		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
@@ -1159,16 +1052,16 @@ function crearformSHOWCURRENTpersona(dni, nombre_persona, apellidos_persona, fec
 
 //Función ajax con promesas
 function devolverpersonasAjaxPromesa(){
-
-	crearformoculto('form_generico','');
-	insertacampo('form_generico','controlador', 'persona');
-	insertacampo('form_generico','action', 'SEARCH');
+	
+	crearformoculto('form_devolver_personas','');
+	insertacampo('form_devolver_personas','controlador', 'persona');
+	insertacampo('form_devolver_personas','action', 'SEARCH');
 	
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			method: "POST",
 			url: "http://193.147.87.202/Back/index.php",
-			data: $("#form_generico").serialize(),
+			data: $("#form_devolver_personas").serialize(),
 		}).done(res => {
 			if (res.ok != true) {
 				reject(res);
@@ -1198,16 +1091,18 @@ async function devolverpersonasajax() {
         	setLang(idioma);
 		});
 
-		document.getElementById('form_generico').remove();
+		document.getElementById('form_devolver_personas').remove();
 }
+
 
 function getListPersonas(listapersonas){
 	
 	//listapersonas = devolverpersonas();
 	//listapersonas = devolverpersonasajax();
 	
-	$("#id_datospersonas").html = '';
+	//$("#id_datospersonas").html = '';
 	document.getElementById('id_datospersonas').innerHTML= '';
+	alert('tbody vacío');
 	for (let persona of listapersonas){
 
 		datosfila = "'"+persona.dni+"',"+"'"+persona.nombre_persona+"',"+"'"+persona.apellidos_persona+"',"+"'"+persona.fechaNacimiento_persona+
@@ -1223,6 +1118,8 @@ function getListPersonas(listapersonas){
 		lineatabla += botonedit+botondelete+botonshowcurrent+"</tr>";
 
 		$("#id_datospersonas").append(lineatabla);
+		
+	
 	}
 
 }
