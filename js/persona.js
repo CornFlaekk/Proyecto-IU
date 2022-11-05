@@ -500,20 +500,36 @@ function resetearformpersona(){
 	$("#id_dni").attr('readonly',false);
 	$("#id_dni").val('');
 	$("#id_dni").on('blur',false);
+	document.getElementById('id_dni').style.borderColor = "#676774";
+
 	$("#id_nombre_persona").attr('readonly',false);
 	$("#id_nombre_persona").val('');
+	document.getElementById('id_nombre_persona').style.borderColor = "#676774";
+
 	$("#id_apellidos_persona").attr('readonly',false);
 	$("#id_apellidos_persona").val('');
+	document.getElementById('id_apellidos_persona').style.borderColor = "#676774";
+
 	$("#id_fechaNacimiento_persona").attr('readonly',false);
 	$("#id_fechaNacimiento_persona").val('');
+	document.getElementById('id_fechaNacimiento_persona').style.borderColor = "#676774";
+
 	$("#id_direccion_persona").attr('readonly',false);
 	$("#id_direccion_persona").val('');
+	document.getElementById('id_direccion_persona').style.borderColor = "#676774";
+
 	$("#id_telefono_persona").attr('readonly',false);
 	$("#id_telefono_persona").val('');
+	document.getElementById('id_telefono_persona').style.borderColor = "#676774";
+
 	$("#id_email_persona").attr('readonly',false);
 	$("#id_email_persona").val('');
+	document.getElementById('id_email_persona').style.borderColor = "#676774";
+
 	$("#id_foto_persona").attr('readonly',false);
 	$("#id_foto_persona").val('');
+	document.getElementById('id_foto_persona').style.borderColor = "#676774";
+
 
 	// eliminar el boton de submit de formulario
 	$("#id_boton_buscar_persona").remove();
@@ -641,8 +657,9 @@ async function ADDpersonaajax() {
 		});
 
 		setLang();
-		document.getElementById('id_form_persona').remove();
-		document.getElementById('id_imagen_enviar_form').remove(); 
+		resetearformpersona();
+		//document.getElementById('id_form_persona').remove();
+		//document.getElementById('id_imagen_enviar_form').remove(); 
 
 }
 
@@ -759,8 +776,10 @@ async function EDITpersonaajax() {
 		});
 
 		setLang();
-		document.getElementById('id_form_persona').remove();
-		document.getElementById('id_imagen_enviar_form').remove(); 
+		resetearformpersona();
+
+		//document.getElementById('id_form_edit_persona').remove();
+		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
 
@@ -862,8 +881,9 @@ async function DELETEpersonaajax() {
 		});
 
 		setLang();
-		document.getElementById('id_form_persona').remove();
-		document.getElementById('id_imagen_enviar_form').remove(); 
+		resetearformpersona();
+		//document.getElementById('id_form_persona').remove();
+		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
 
