@@ -100,7 +100,6 @@ function crearformoculto(name, action){
 	    formu.style.display = "none";
 
 	} 
-
 }
 
 /**Función para insertar campos en el formulario a mayores*/
