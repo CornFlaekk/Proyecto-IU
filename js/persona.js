@@ -404,7 +404,6 @@ function peticionADDpersonaBack(){
 
 	alert('peticion a back add');
 	ADDpersonaajax();
-	//document.getElementById('id_form_persona').submit();
 	
 }
 
@@ -415,8 +414,6 @@ function peticionEDITpersonaBack(){
 	alert('peticion a back edit');
 	EDITpersonaajax();
 	
-	//document.getElementById('id_form_persona').submit();
-	
 }
 
 // peticionDELETEpersonaBack()
@@ -425,7 +422,6 @@ function peticionDELETEpersonaBack(){
 
 	alert('peticion a back delete');
 	DELETEpersonaajax();
-	//document.getElementById('id_form_persona').submit();
 	
 }
 
@@ -435,7 +431,6 @@ function peticionSEARCHpersonaBack(){
 	
 	alert('peticion a back search');
 	SEARCHpersonaajax();
-	//document.getElementById('id_form_persona').submit();
 	
 }
 
@@ -464,7 +459,6 @@ function edit_persona(){
 	if (comprobar_form_persona_add()){
 		peticionEDITpersonaBack();
 	}
-	//devolverpersonasajax();
 
 }
 
@@ -485,8 +479,6 @@ function search_persona(){
 	//if (comprobar_form_persona_search()){
 		//comprobar_form_persona_search();
 		peticionSEARCHpersonaBack();
-	//}else{
-	//	alert('search con campos incorrectos')
 	//}
 }
 
@@ -650,7 +642,7 @@ async function ADDpersonaajax() {
 			if (res.code = 'SQL_OK'){
 				res.code = 'add_persona_OK';
 			}
-			mensajeOK(res.code);
+			mensajeactionOK(res.code);
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
@@ -658,8 +650,6 @@ async function ADDpersonaajax() {
 
 		setLang();
 		resetearformpersona();
-		//document.getElementById('id_form_persona').remove();
-		//document.getElementById('id_imagen_enviar_form').remove(); 
 
 }
 
@@ -768,8 +758,8 @@ async function EDITpersonaajax() {
 			if (res.code = 'SQL_OK'){
 				res.code = 'edit_persona_OK';
 			}
-			mensajeOK(res.code);
-			//devolverpersonasajax();
+			mensajeactionOK(res.code);
+			
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
@@ -777,9 +767,6 @@ async function EDITpersonaajax() {
 
 		setLang();
 		resetearformpersona();
-
-		//document.getElementById('id_form_edit_persona').remove();
-		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
 
@@ -874,7 +861,7 @@ async function DELETEpersonaajax() {
 			if (res.code = 'SQL_OK'){
 				res.code = 'delete_persona_OK';
 			}
-			mensajeOK(res.code);
+			mensajeactionOK(res.code);
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
@@ -882,8 +869,6 @@ async function DELETEpersonaajax() {
 
 		setLang();
 		resetearformpersona();
-		//document.getElementById('id_form_persona').remove();
-		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
 
@@ -899,7 +884,6 @@ function crearformSEARCHpersona(){
 	resetearformpersona();
 	
 	// creo la accion para el formulario y el onsubmit
-	//$("#id_form_persona").attr('action','http://193.147.87.202/procesaform.php');
 	$("#id_form_persona").on('submit', search_persona);
 	
 	// pongo el campo de dni editable y le asocio la funcion para el onblur
@@ -942,22 +926,11 @@ function crearformSEARCHpersona(){
 	$("#id_foto_persona").blur(comprobar_foto_persona_search);
 	$("#id_foto_persona").val('');
 
-		
-	//eliminamos la imagen que utilizamos en las otras acciones para poder hacer un submit con el formulario
-	//$("#id_imagen_enviar_form").remove();
-	//$("#id_boton_buscar_persona").on('click', search_persona);
-
-	//accionsubmit = document.createElement("button");
-	//accionsubmit.type = 'submit';
-	//accionsubmit.id = 'id_accionsubmit';
 
 	//creo un input de tipo image que el formulario va utilizar como si fuese un tipo input submit
 	botonsubmit = document.createElement("img");
-	//botonsubmit.type = 'image';
 	botonsubmit.id = "id_boton_buscar_persona";
 	botonsubmit.className = 'titulo_search';
-	//botonsubmit.title= "Buscar";
-	//botonsubmit.alt= "Buscar";
 	botonsubmit.src= "./images/search4.png";
 	botonsubmit.width = '80';
 	botonsubmit.height = '80';
@@ -965,7 +938,6 @@ function crearformSEARCHpersona(){
 
 	// coloco la imagen para submit en el formulario
 	$("#id_boton_buscar_persona").on('click', search_persona);
-	//$("#id_form_persona").append(botonsubmit);
 
 	setLang(); 
 
@@ -1022,7 +994,7 @@ async function SEARCHpersonaajax() {
 			if (res.code = 'SQL_OK'){
 				res.code = 'search_persona_OK';	}
 			getListPersonas(res.resource);
-			//mensajeOK(res.code);
+			mensajeactionOK(res.code);
 		})
 		.catch((res) => {
 			alert('.catch');
@@ -1030,9 +1002,6 @@ async function SEARCHpersonaajax() {
 		});
 		setLang();
 		document.getElementById('form_generico').remove();
-		//document.getElementById('id_imagen_enviar_form').remove(); 
-		//document.getElementById('id_form_persona').remove();
-		//document.getElementById('id_imagen_enviar_form').remove(); 
 }
 
 function crearformSHOWCURRENTpersona(dni, nombre_persona, apellidos_persona, fechaNacimiento_persona, direccion_persona, telefono_persona, email_persona, foto_persona){
@@ -1116,10 +1085,6 @@ async function devolverpersonasajax() {
 
 function getListPersonas(listapersonas){
 	
-	//listapersonas = devolverpersonas();
-	//listapersonas = devolverpersonasajax();
-	
-	//$("#id_datospersonas").html = '';
 	document.getElementById('id_datospersonas').innerHTML= '';
 
 	for (let persona of listapersonas){
@@ -1142,4 +1107,3 @@ function getListPersonas(listapersonas){
 	}
 
 }
-
