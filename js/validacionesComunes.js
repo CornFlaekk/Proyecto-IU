@@ -69,9 +69,9 @@ function ponerinvisibleformpersona(){
 	document.getElementById('id_caja_formulario_persona').style.display = 'none';
 }
 
-function mensajeKO(idElemento, texto){
+function mensajeKO(idElemento, codigoerror){
 
-	document.getElementById('id_texterror').innerHTML = texto;
+	document.getElementById('id_texterror').classList.add(codigoerror); 
 	document.getElementById('id_caja_error').style.display = 'block';
 	document.getElementById(idElemento).style.borderColor = "#ff0000";
 
@@ -86,8 +86,6 @@ function mensajeOK(idElemento){
 }
 
 /**Función para crear un formulario oculto*/
-
-
 function crearformoculto(name, action){
 
 	if ( $("#" + name).length == 0) {
@@ -117,7 +115,6 @@ function insertacampo(idform, name, value){
 
 function mensajeactionOK(codigo){
 
-	//document.getElementById('id_texterror').innerHTML = codigo;
 	document.getElementById('id_texterror').classList.add(codigo);
 	document.getElementById('id_caja_error').style.borderColor = "#00e600"; 
 	document.getElementById('id_caja_error').style.display = 'block';
@@ -204,6 +201,25 @@ function letras_con_acento_guion_y_espacio(idElemento){
 		return true;
 	}
 }
+
+function expr_dni_search(idElemento){
+
+	letra_antes_num = /[A-Za-z][0-9]/;
+	mas_una_letra = /[A-Za-z].*[A-Za-z]/;
+	mas_8_num = /[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*/;
+	caracteres_permit = /^[A-aZa-z0-9]{0,9}$/;
+
+	if((letra_antes_num.test(document.getElementById(idElemento).value) && 
+			mas_una_letra.test(document.getElementById(idElemento).value) && 
+			mas_8_num.test(document.getElementById(idElemento).value) && 
+			!(caracteres_permit.test(document.getElementById(idElemento).value))) == true)
+	{
+		return true;
+	}else{
+		return false;
+	}
+}
+
 
 function numeros_y_barra_diagonal(idElemento){
 

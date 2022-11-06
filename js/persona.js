@@ -32,35 +32,32 @@ function comprobar_form_persona_search(){
 function comprobar_dni(){
 	
 	if(!size_minimo('id_dni',9)){
-		mensajeKO('id_dni', 'Tamaño del dni demasiado corto (8 Números y 1 Letra)');
+		mensajeKO('id_dni', 'dni_corto_ko');
 		return false;
 	}
 	if(!size_maximo('id_dni',9)){
-		mensajeKO('id_dni', 'Tamaño del dni demasiado largo (8 Números Y 1 Letra)');
+		mensajeKO('id_dni', 'dni_largo_ko');
 		return false;
 	}
-
 
 	dni = document.getElementById('id_dni').value;
 	var letras_may = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
 	var letras_min = ['t', 'r', 'w', 'a', 'g', 'm', 'Y', 'f', 'p', 'd', 'x', 'b', 'n', 'j', 'z', 's', 'q', 'v', 'h', 'l', 'c', 'k', 'e', 't'];
 
 	if( !(/^[0-9]{8}[A-Za-z]$/.test(dni)) ) {
-		mensajeKO('id_dni', 'Formato del dni incorrecto (8 Números Y 1 Letra)');
+		mensajeKO('id_dni', 'dni_formato_ko');
 	  	return false;
 	}
 
 	if(dni.charAt(8) != letras_may[(dni.substring(0, 8))%23] && dni.charAt(8) != letras_min[(dni.substring(0, 8))%23]) {
-		mensajeKO('id_dni', 'El dni es incorrecto (Los números no se corresponden con la letra)');
+		mensajeKO('id_dni', 'dni_letra_ko');
 	  	return false;
 	}
-
 
 	else{
 		mensajeOK('id_dni');
 		return true;
-	}
-	
+	}	
 }
 
 // comprobar_dni_search()
@@ -71,15 +68,14 @@ function comprobar_dni_search(){
 		document.getElementById('id_form_persona').removeAttribute('id_dni');
 	}
 	if(!size_maximo('id_dni',9)){
-		mensajeKO('id_dni', 'Tamaño del dni demasiado largo (8 Números Y 1 Letra)');
+		mensajeKO('id_dni', 'dni_largo_ko');
 		return false;
 	}
 
 	dni = document.getElementById('id_dni').value;
 
-	if( !(/^[0-9]{8}[A-Za-z]$/.test(dni)) ) {
-		mensajeKO('id_dni', 'Formato del dni incorrecto (8 Números Y 1 Letra)');
-	  	return false;
+	if (!expr_dni_search('id_dni')){
+		mensajeKO('id_dni', 'dni_formato_search_ko');
 	}
 
 	else{
