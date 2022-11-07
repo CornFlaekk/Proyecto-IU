@@ -295,8 +295,13 @@ function caracteres_foto(idElemento){
 
 function expr_foto(idElemento){
 
+	if(document.getElementById(idElemento).value == '' || document.getElementById(idElemento).value == null){
+		return true;
+	}
+
 	caracteres = /^[a-zA-Z0-9\\\/\.]+\.(png|jpg)$/;
 	valido = caracteres.test(document.getElementById(idElemento).value);
+	
 	if(!valido){
 		return false;
 	}

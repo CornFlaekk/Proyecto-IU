@@ -37,10 +37,62 @@ arrayES = {
 	/////////////////////////////////////////Errores FRONT//////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Códigos
-	//usuario
+	/////////////////////////////////////////USUARIO////////////////////////////////////////////////////
+
 	'usuario_corto_ko': 'Tamaño login demasiado corto (min 3 caracteres)',
 	'usuario_largo_ko': 'Tamaño login demasiado largo (max 15 caracteres)',
 	'usuario_formato_ko': 'El login contiene carecteres no permitidos (solo letras sin acentos y números)',
+
+	/////////////////////////////////////////PERSONA////////////////////////////////////////////////////
+
+	//dni
+	'dni_corto_ko': 'dni_corto_ko',
+	'dni_largo_ko': 'dni_largo_ko',
+	'dni_formato_ko': 'dni_formato_ko',
+	'dni_letra_ko': 'dni_letra_ko',
+	'dni_formato_search_ko': 'dni_formato_search_ko',
+
+	//nombre
+	'nombre_persona_corto_ko': 'Tamaño nombre demasiado corto (min 3 caracteres)',
+	'nombre_persona_largo_ko': 'Tamaño nombre demasiado largo (max 45 caracteres)',
+	'nombre_persona_formato_ko': 'El nombre contiene carecteres no permitidos (solo letras, espacios y guiones (-)',
+
+	//apellido
+	'apellidos_persona_corto_ko': 'Tamaño apellidos demasiado corto (min 5 caracteres)',
+	'apellidos_persona_largo_ko': 'Tamaño apellidos demasiado largo (max 100 caracteres)',
+	'apellidos_persona_formato_ko': 'Los apellidos contienen carecteres no permitidos (solo letras, espacios y guiones (-)',
+
+	//fechaNacimiento
+
+	'fechaNacimiento_persona_corto_ko': 'Tamaño fecha demasiado corto (min 10 caracteres)',
+	'fechaNacimiento_persona_largo_ko': 'Tamaño fecha demasiado largo (max 10 caracteres)',
+	'fechaNacimiento_persona_formato_ko': 'La fecha contiene carecteres no permitidos (DD/MM/AAAA)',
+
+	//dirección
+	'direccion_persona_corto_ko': 'Tamaño dirección demasiado corto (min 10 caracteres)',
+	'direccion_persona_largo_ko': 'Tamaño dirección demasiado largo (max 200 caracteres)',
+	'direccion_persona_formato_ko': 'La dirección incluye caracteres no permitidos (Se permiten caracteres alfabéticos con acentos, números, espacios, ‘/’, ’-’, ’,’, ’º’ y ‘ª’)',
+
+	//telefono
+	'telefono_persona_corto_ko': 'Tamaño teléfono demasiado corto (min 9 caracteres)',
+	'telefono_persona_largo_ko': 'Tamaño teléfono demasiado largo (max 9 caracteres)',
+	'telefono_persona_formato_ko': 'El teléfono contiene carecteres no permitidos (solo números)',
+	'telefono_persona_espana_ko': 'El teléfono no tiene formato de España (Empieza por 6,7,8 o 9)',
+
+	//email
+	'email_persona_corto_ko': 'Tamaño email demasiado corto (min 8 caracteres)',
+	'email_persona_largo_ko': 'Tamaño email demasiado largo (max 45 caracteres)',
+	'email_persona_caracteres_ko': 'El email contiene carecteres no permitidos (Se permiten: letras minúsculas sin acento, números, guiones (‘-’ o ‘_’) puntos, apóstrofos (‘) y ‘@’)',
+	'email_persona_formato_ko': 'El email no tiene el formato adecuado ( ejemplo@dominio.extension )',
+
+	//foto
+	'foto_persona_corto_ko': 'Tamaño foto demasiado corto (min 6 caracteres)',
+	'foto_persona_largo_ko': 'Tamaño foto demasiado largo (max 40 caracteres)',
+	'foto_persona_caracteres_ko': 'La foto contiene carecteres no permitidos (solo letras sin acentos y ".")',
+	'foto_persona_formato_ko': 'La foto contiene carecteres no permitidos (solo letras sin acentos y ".")',
+
+
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////Errores BACK///////////////////////////////////////////////

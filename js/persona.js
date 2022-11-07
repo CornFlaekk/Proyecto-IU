@@ -89,15 +89,15 @@ function comprobar_dni_search(){
 function comprobar_nombre_persona(){
 
 	if (!size_minimo('id_nombre_persona',3)){
-		mensajeKO('id_nombre_persona', 'Tamaño nombre demasiado corto (min 3 caracteres)');
+		mensajeKO('id_nombre_persona', 'nombre_persona_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_nombre_persona',45)){
-		mensajeKO('id_nombre_persona', 'Tamaño nombre demasiado largo (max 45 caracteres)');
+		mensajeKO('id_nombre_persona', 'nombre_persona_largo_ko');
 		return false;
 	}
 	if (!letras_con_acento_guion_y_espacio('id_nombre_persona')){
-		mensajeKO('id_nombre_persona', 'El nombre contiene carecteres no permitidos (solo letras, espacios y guiones (-)');
+		mensajeKO('id_nombre_persona', 'nombre_persona_formato_ko');
 		return false;
 	}
 
@@ -128,15 +128,15 @@ function comprobar_nombre_persona_search(){
 function comprobar_apellidos_persona(){
 
 	if (!size_minimo('id_apellidos_persona',5)){
-		mensajeKO('id_apellidos_persona', 'Tamaño apellidos demasiado corto (min 5 caracteres)');
+		mensajeKO('id_apellidos_persona', 'apellidos_persona_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_apellidos_persona',100)){
-		mensajeKO('id_apellidos_persona', 'Tamaño apellidos demasiado largo (max 100 caracteres)');
+		mensajeKO('id_apellidos_persona', 'apellidos_persona_largo_ko');
 		return false;
 	}
 	if (!letras_con_acento_guion_y_espacio('id_apellidos_persona')){
-		mensajeKO('id_apellidos_persona', 'Los apellidos contienen carecteres no permitidos (solo letras, espacios y guiones (-)');
+		mensajeKO('id_apellidos_persona', 'apellidos_persona_formato_ko');
 		return false;
 	}
 
@@ -150,11 +150,11 @@ function comprobar_apellidos_persona(){
 function comprobar_apellidos_persona_search(){
 	
 	if (!size_maximo('id_apellidos_persona',100)){
-		mensajeKO('id_apellidos_persona', 'Tamaño apellidos demasiado largo (max 100 caracteres)');
+		mensajeKO('id_apellidos_persona', 'apellidos_persona_largo_ko');
 		return false;
 	}
 	if (!letras_con_acento_guion_y_espacio('id_apellidos_persona')){
-		mensajeKO('id_apellidos_persona', 'Los apellidos contienen carecteres no permitidos (solo letras, espacios y guiones (-)');
+		mensajeKO('id_apellidos_persona', 'apellidos_persona_formato_ko');
 		return false;
 	}
 
@@ -167,15 +167,15 @@ function comprobar_apellidos_persona_search(){
 function comprobar_fechaNacimiento_persona(){
 
 	if (!size_minimo('id_fechaNacimiento_persona',10)){
-		mensajeKO('id_fechaNacimiento_persona', 'Tamaño fecha demasiado corto (min 10 caracteres)');
+		mensajeKO('id_fechaNacimiento_persona', 'fechaNacimiento_persona_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_fechaNacimiento_persona',10)){
-		mensajeKO('id_fechaNacimiento_persona', 'Tamaño fecha demasiado largo (max 10 caracteres)');
+		mensajeKO('id_fechaNacimiento_persona', 'fechaNacimiento_persona_largo_ko');
 		return false;
 	}
 	if (!numeros_y_barra_diagonal('id_fechaNacimiento_persona')){
-		mensajeKO('id_fechaNacimiento_persona', 'La fecha contiene carecteres no permitidos (DD/MM/AAAA)');
+		mensajeKO('id_fechaNacimiento_persona', 'fechaNacimiento_persona_formato_ko');
 		return false;
 	}
 
@@ -189,11 +189,11 @@ function comprobar_fechaNacimiento_persona(){
 function comprobar_fechaNacimiento_persona_search(){
 	
 	if (!size_maximo('id_fechaNacimiento_persona',10)){
-		mensajeKO('id_fechaNacimiento_persona', 'Tamaño fecha demasiado largo (max 10 caracteres)');
+		mensajeKO('id_fechaNacimiento_persona', 'fechaNacimiento_persona_largo_ko');
 		return false;
 	}
 	if (!numeros_y_barra_diagonal('id_fechaNacimiento_persona')){
-		mensajeKO('id_fechaNacimiento_persona', 'La fecha contiene carecteres no permitidos (solo letras, espacios y guiones (-)');
+		mensajeKO('id_fechaNacimiento_persona', 'fechaNacimiento_persona_formato_ko');
 		return false;
 	}
 
@@ -207,15 +207,15 @@ function comprobar_fechaNacimiento_persona_search(){
 function comprobar_direccion_persona(){
 
 	if (!size_minimo('id_direccion_persona',10)){
-		mensajeKO('id_direccion_persona', 'Tamaño dirección demasiado corto (min 10 caracteres)');
+		mensajeKO('id_direccion_persona', 'direccion_persona_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_direccion_persona',200)){
-		mensajeKO('id_direccion_persona', 'Tamaño dirección demasiado largo (max 200 caracteres)');
+		mensajeKO('id_direccion_persona', 'direccion_persona_largo_ko');
 		return false;
 	}
 	if (!expr_direccion('id_direccion_persona')){
-		mensajeKO('id_direccion_persona', 'La dirección incluye caracteres no permitidos (Se permiten caracteres alfabéticos con acentos, números, espacios, ‘/’, ’-’, ’,’, ’º’ y ‘ª’)');
+		mensajeKO('id_direccion_persona', 'direccion_persona_formato_ko');
 		return false;
 	}
 
@@ -229,11 +229,11 @@ function comprobar_direccion_persona(){
 function comprobar_direccion_persona_search(){
 	
 	if (!size_maximo('id_direccion_persona',200)){
-		mensajeKO('id_direccion_persona', 'Tamaño dirección demasiado largo (max 200 caracteres)');
+		mensajeKO('id_direccion_persona', 'direccion_persona_largo_ko');
 		return false;
 	}
 	if (!expr_direccion('id_direccion_persona')){
-		mensajeKO('id_direccion_persona', 'La dirección incluye caracteres no permitidos (Se permiten caracteres alfabéticos con acentos, números, espacios, ‘/’, ’-’, ’,’, ’º’ y ‘ª’)');
+		mensajeKO('id_direccion_persona', 'direccion_persona_formato_ko');
 		return false;
 	}
 
@@ -246,20 +246,20 @@ function comprobar_direccion_persona_search(){
 function comprobar_telefono_persona(){
 
 	if (!size_minimo('id_telefono_persona',9)){
-		mensajeKO('id_telefono_persona', 'Tamaño teléfono demasiado corto (min 9 caracteres)');
+		mensajeKO('id_telefono_persona', 'telefono_persona_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_telefono_persona',9)){
-		mensajeKO('id_telefono_persona', 'Tamaño teléfono demasiado largo (max 9 caracteres)');
+		mensajeKO('id_telefono_persona', 'telefono_persona_largo_ko');
 		return false;
 	}
 	if (!solo_numeros('id_telefono_persona')){
-		mensajeKO('id_telefono_persona', 'El teléfono contiene carecteres no permitidos (solo números (-)');
+		mensajeKO('id_telefono_persona', 'telefono_persona_formato_ko');
 		return false;
 	}
 
 	if (!expr_telefono('id_telefono_persona')){
-		mensajeKO('id_telefono_persona', 'El teléfono no tiene formato de España (Empieza por 6,7,8 o 9)');
+		mensajeKO('id_telefono_persona', 'telefono_persona_espana_ko');
 		return false;
 	}
 
@@ -273,11 +273,11 @@ function comprobar_telefono_persona(){
 function comprobar_telefono_persona_search(){
 	
 	if (!size_maximo('id_telefono_persona',9)){
-		mensajeKO('id_telefono_persona', 'Tamaño teléfono demasiado largo (max 9 caracteres)');
+		mensajeKO('id_telefono_persona', 'telefono_persona_largo_ko');
 		return false;
 	}
 	if (!solo_numeros('id_telefono_persona')){
-		mensajeKO('id_telefono_persona', 'El teléfono contiene carecteres no permitidos (solo números');
+		mensajeKO('id_telefono_persona', 'telefono_persona_formato_ko');
 		return false;
 	}
 
@@ -290,20 +290,20 @@ function comprobar_telefono_persona_search(){
 function comprobar_email_persona(){
 
 	if (!size_minimo('id_email_persona',8)){
-		mensajeKO('id_email_persona', 'Tamaño email demasiado corto (min 8 caracteres)');
+		mensajeKO('id_email_persona', 'email_persona_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_email_persona',45)){
-		mensajeKO('id_email_persona', 'Tamaño email demasiado largo (max 45 caracteres)');
+		mensajeKO('id_email_persona', 'email_persona_largo_ko');
 		return false;
 	}
 	if (!caracteres_email('id_email_persona')){
-		mensajeKO('id_email_persona', 'El email contiene carecteres no permitidos (Se permiten: letras minúsculas sin acento, números, guiones (‘-’ o ‘_’) puntos, apóstrofos (‘) y ‘@’)');
+		mensajeKO('id_email_persona', 'email_persona_caracteres_ko');
 		return false;
 	}
 
 	if (!expr_email('id_email_persona')){
-		mensajeKO('id_email_persona', 'El email no tiene el formato adecuado ( ejemplo@dominio.extension )');
+		mensajeKO('id_email_persona', 'email_persona_formato_ko');
 		return false;
 	}
 	
@@ -317,11 +317,11 @@ function comprobar_email_persona(){
 function comprobar_email_persona_search(){
 	
 	if (!size_maximo('id_email_persona',45)){
-		mensajeKO('id_email_persona', 'Tamaño email demasiado largo (max 45 caracteres)');
+		mensajeKO('id_email_persona', 'email_persona_largo_ko');
 		return false;
 	}
 	if (!caracteres_email('id_email_persona')){
-		mensajeKO('id_email_persona', 'El email contiene carecteres no permitidos (Se permiten: letras minúsculas sin acento, números, guiones (‘-’ o ‘_’) puntos, apóstrofos (‘) y ‘@’)');
+		mensajeKO('id_email_persona', 'email_persona_caracteres_ko');
 		return false;
 	}
 
@@ -334,20 +334,20 @@ function comprobar_email_persona_search(){
 function comprobar_foto_persona(){
 
 	if (!size_minimo('id_foto_persona',6)){
-		mensajeKO('id_foto_persona', 'Tamaño foto demasiado corto (min 6 caracteres)');
+		mensajeKO('id_foto_persona', 'foto_persona_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_foto_persona',40)){
-		mensajeKO('id_foto_persona', 'Tamaño foto demasiado largo (max 40 caracteres)');
+		mensajeKO('id_foto_persona', 'foto_persona_largo_ko');
 		return false;
 	}
 	if (!caracteres_foto('id_foto_persona')){
-		mensajeKO('id_foto_persona', 'La foto contiene carecteres no permitidos (solo letras sin acentos y ".")');
+		mensajeKO('id_foto_persona', 'foto_persona_caracteres_ko');
 		return false;
 	}
 
 	if (!expr_foto('id_foto_persona')){
-		mensajeKO('id_foto_persona', 'La foto no utuliza el formato permitido (ejemplo.png o ejemplo.jpg)');
+		mensajeKO('id_foto_persona', 'foto_persona_formato_ko');
 		return false;
 	}
 
@@ -362,11 +362,11 @@ function comprobar_foto_persona(){
 function comprobar_foto_persona_search(){
 	
 	if (!size_maximo('id_foto_persona',40)){
-		mensajeKO('id_foto_persona', 'Tamaño foto demasiado largo (max 40 caracteres)');
+		mensajeKO('id_foto_persona', 'foto_persona_largo_ko');
 		return false;
 	}
 	if (!caracteres_foto('id_foto_persona')){
-		mensajeKO('id_foto_persona', 'La foto contiene carecteres no permitidos (solo letras sin acentos y ".")');
+		mensajeKO('id_foto_persona', 'foto_persona_caracteres_ko');
 		return false;
 	}
 
