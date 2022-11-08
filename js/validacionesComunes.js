@@ -74,7 +74,7 @@ function mensajeKO(idElemento, codigoerror){
 	document.getElementById('id_texterror').classList.add(codigoerror); 
 	document.getElementById('id_caja_error').style.display = 'block';
 	document.getElementById(idElemento).style.borderColor = "#ff0000";
-
+	setLang();
 }
 
 function mensajeOK(idElemento){
@@ -82,7 +82,7 @@ function mensajeOK(idElemento){
 	document.getElementById('id_texterror').innerHTML = '';
 	document.getElementById('id_caja_error').style.display = 'none';
 	document.getElementById(idElemento).style.borderColor = "#00e600";
-
+	setLang();
 }
 
 /**Función para crear un formulario oculto*/
@@ -209,14 +209,14 @@ function expr_dni_search(idElemento){
 	mas_8_num = /[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*/;
 	caracteres_permit = /^[A-aZa-z0-9]{0,9}$/;
 
-	if((letra_antes_num.test(document.getElementById(idElemento).value) && 
-			mas_una_letra.test(document.getElementById(idElemento).value) && 
-			mas_8_num.test(document.getElementById(idElemento).value) && 
+	if((letra_antes_num.test(document.getElementById(idElemento).value) || 
+			mas_una_letra.test(document.getElementById(idElemento).value) || 
+			mas_8_num.test(document.getElementById(idElemento).value) || 
 			!(caracteres_permit.test(document.getElementById(idElemento).value))) == true)
 	{
-		return true;
-	}else{
 		return false;
+	}else{
+		return true;
 	}
 }
 
@@ -294,10 +294,6 @@ function caracteres_foto(idElemento){
 }
 
 function expr_foto(idElemento){
-
-	if(document.getElementById(idElemento).value == '' || document.getElementById(idElemento).value == null){
-		return true;
-	}
 
 	caracteres = /^[a-zA-Z0-9\\\/\.]+\.(png|jpg)$/;
 	valido = caracteres.test(document.getElementById(idElemento).value);

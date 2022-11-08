@@ -82,7 +82,7 @@ async function login() {
 		.then((res) => {
 			setCookie('token', res.resource);
 			setCookie('usuarioSistema', document.getElementById("id_usuario").value);
-			window.location.href = "gestionusuario.html";
+			window.location.href = "menu.html";
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);

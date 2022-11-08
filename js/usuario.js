@@ -30,15 +30,15 @@ function comprobar_form_usuario_search() {
 function comprobar_usuario() {
 
 	if (!size_minimo('id_usuario', 3)) {
-		mensajeKO('id_usuario', 'Tamaño login demasiado corto (min 3 caracteres)');
+		mensajeKO('id_usuario', 'usuario_corto_ko');
 		return false;
 	}
 	if (!size_maximo('id_usuario', 45)) {
-		mensajeKO('id_usuario', 'Tamaño login demasiado largo (max 45 caracteres)');
+		mensajeKO('id_usuario', 'usuario_largo_ko');
 		return false;
 	}
 	if (!letras_sin_acento_y_numeros('id_usuario')) {
-		mensajeKO('id_usuario', 'El login contiene carecteres no permitidos (solo letras sin acentos y números)');
+		mensajeKO('id_usuario', 'usuario_formato_ko');
 		return false;
 	}
 
@@ -50,12 +50,17 @@ function comprobar_usuario() {
 // comprobar_usuario_search()
 // funcion de validación de formato de usuario en search
 function comprobar_usuario_search() {
+
+	if(document.getElementById('id_usuario').value == ''){
+		mensajeOK('id_usuario');
+		return true;
+	}
 	if (!size_maximo('id_usuario', 45)) {
-		mensajeKO('id_usuario', 'Tamaño login demasiado largo (max 45 caracteres)');
+		mensajeKO('id_usuario', 'usuario_largo_ko');
 		return false;
 	}
 	if (!letras_sin_acento_y_numeros('id_usuario')) {
-		mensajeKO('id_usuario', 'El login contiene carecteres no permitidos (solo letras sin acentos y números)');
+		mensajeKO('id_usuario', 'usuario_formato_ko');
 		return false;
 	}
 
@@ -63,65 +68,11 @@ function comprobar_usuario_search() {
 	return true;
 }
 
-// comprobar_dni()
-// funcion de validación de formato de dni en acciones que no sean search
-function comprobar_dni() {
 
-	if (!size_minimo('id_dni', 9)) {
-		mensajeKO('id_dni', 'Tamaño del dni demasiado corto (8 Números y 1 Letra)');
-		return false;
-	}
-	if (!size_maximo('id_dni', 9)) {
-		mensajeKO('id_dni', 'Tamaño del dni demasiado largo (8 Números Y 1 Letra)');
-		return false;
-	}
-
-
-	dni = document.getElementById('id_dni').value;
-	var letras_may = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
-	var letras_min = ['t', 'r', 'w', 'a', 'g', 'm', 'Y', 'f', 'p', 'd', 'x', 'b', 'n', 'j', 'z', 's', 'q', 'v', 'h', 'l', 'c', 'k', 'e', 't'];
-
-	if (!(/^[0-9]{8}[A-Za-z]$/.test(dni))) {
-		mensajeKO('id_dni', 'Formato del dni incorrecto (8 Números Y 1 Letra)');
-		return false;
-	}
-
-	if (dni.charAt(8) != letras_may[(dni.substring(0, 8)) % 23] && dni.charAt(8) != letras_min[(dni.substring(0, 8)) % 23]) {
-		mensajeKO('id_dni', 'El dni es incorrecto (Los números no se corresponden con la letra)');
-		return false;
-	}
-
-
-	else {
-		mensajeOK('id_dni');
-		return true;
-	}
-
-}
-
-// comprobar_dni_search()
-// funcion de validación de formato de dni en search
-function comprobar_dni_search() {
-	if (!size_maximo('id_dni', 9)) {
-		mensajeKO('id_dni', 'Tamaño del dni demasiado largo (8 Números Y 1 Letra)');
-		return false;
-	}
-
-	dni = document.getElementById('id_dni').value;
-
-	if (!(/^[0-9]{8}[A-Za-z]$/.test(dni))) {
-		mensajeKO('id_dni', 'Formato del dni incorrecto (8 Números Y 1 Letra)');
-		return false;
-	}
-
-	else {
-		mensajeOK('id_dni');
-		return true;
-	}
-}
 
 // comprobar_id_rol()
 // funcion de validacion del formato de id_rol en acciones que no son search
+//al solo poder buscar por el select no hay fallo
 function comprobar_id_rol() {
 	return true;
 }
@@ -232,9 +183,13 @@ function resetearformusuario() {
 	$("#id_dni").attr('readonly', false);
 	$("#id_dni").val('');
 	$("#id_dni").on('blur', false);
+	document.getElementById('id_dni').style.borderColor = "#676774";
+
 	$("#id_usuario").attr('readonly', false);
 	$("#id_usuario").val('');
 	$("#id_usuario").on('blur', false);
+	document.getElementById('id_usuario').style.borderColor = "#676774";
+
 	$("#id_id_rol").attr('readonly', false);
 	$("#id_id_rol").val('');
 	$("#id_id_rol").on('blur', false);
@@ -516,11 +471,12 @@ async function DELETEusuarioajax() {
 	await usuarioDELETEAjaxPromesa()
 		.then((res) => {
 
-			if (res.code = 'SQL_OK') {
+			if (res.ok) {
 				res.code = 'delete_usuario_OK';
 			}
+			mensajeactionOK(res.code);
 			devolverusuariosajax();
-			mensajeOK(res.code);
+			
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
@@ -573,16 +529,21 @@ function crearformSEARCHusuario() {
 
 //Función ajax con promesas
 function usuarioSEARCHAjaxPromesa() {
+	
 
-	crearformoculto('id_form_usuario', '');
-	insertacampo('id_form_usuario', 'controlador', 'usuario');
-	insertacampo('id_form_usuario', 'action', 'SEARCH');
+	crearformoculto('form_generico', '');
+	insertacampo('form_generico', 'controlador', 'usuario');
+	insertacampo('form_generico', 'action', 'SEARCH');
+	insertacampo('form_generico','dni', document.getElementById('id_dni').value);
+	insertacampo('form_generico','usuario', document.getElementById('id_usuario').value);
+	alert(document.getElementById('id_id_rol').value);
+	insertacampo('form_generico','id_rol', document.getElementById('id_id_rol').value);
 
 	return new Promise(function (resolve, reject) {
 		$.ajax({
 			method: "POST",
 			url: "http://193.147.87.202/Back/index.php",
-			data: $("#id_form_usuario").serialize(),
+			data: $("#form_generico").serialize(),
 		}).done(res => {
 			if (res.ok != true) {
 				reject(res);
@@ -604,15 +565,16 @@ async function SEARCHusuarioajax() {
 	await usuarioSEARCHAjaxPromesa()
 		.then((res) => {
 
-			if (res.code = 'SQL_OK') {
-				res.code = 'search_usuario_OK';
+			if (res.ok == true) {
+				mensajeactionOK('search_usuario_OK');
 			}
-			mensajeOK(res.code);
+			//mensajeOK(res.code);
+			getListUsuarios(res.resource);
 		})
 		.catch((res) => {
 			mensajeFAIL(res.code);
 		});
-
+	document.getElementById('form_generico').remove();
 	setLang();
 	resetearformusuario();
 }
@@ -696,16 +658,15 @@ async function devolverusuariosajax() {
 
 function getListUsuarios(listausuarios) {
 
-	//listausuarios = devolverusuarios();
-	//listausuarios = devolverusuariosajax();
+	document.getElementById('id_datosusuarios').innerHTML= '';
 
-	$("#id_datosusuarios").html = '';
 
 	for (let usuario of listausuarios) {
 
 		datosfila = "'" + usuario.dni + "'," + "'" + usuario.usuario + "'," + "'" + usuario.id_rol.id_rol + "'";
 
 		lineatabla = '<tr><td>' + usuario['dni'] + '</td><td>' + usuario['usuario'] + '</td><td>' + usuario['id_rol'].nombre_rol + "</td>";
+		
 		botonedit = '<td><img class="titulo_edit" src="./images/edit4.png" onclick="crearformEDITusuario(' + datosfila + ');" width="50" height="50"></td>';
 		botondelete = '<td><img class="titulo_delete" src="./images/delete4.png" width="50" height="50" onclick="crearformDELETEusuario(' + datosfila + ');"></td>';
 		botonshowcurrent = '<td><img class="titulo_showcurrent" src="./images/detail4.png" width="50" height="50" onclick="crearformSHOWCURRENTusuario(' + datosfila + ')";></td>';

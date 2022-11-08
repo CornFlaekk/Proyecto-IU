@@ -6,7 +6,7 @@ arrayES = {
 	//Codigos PRACTICA 4
 	'pagina_usuario_wellcome': 'Gestión de usuarios',
 	'dni': 'DNI',
-	'usuario': 'Login Usuario',
+	
 	'id_rol': 'Rol Usuario',
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,8 +39,12 @@ arrayES = {
 	//Códigos
 	/////////////////////////////////////////USUARIO////////////////////////////////////////////////////
 
+
+	'usuario': 'Login Usuario',
+	'contrasena': 'Contraseña',
+
 	'usuario_corto_ko': 'Tamaño login demasiado corto (min 3 caracteres)',
-	'usuario_largo_ko': 'Tamaño login demasiado largo (max 15 caracteres)',
+	'usuario_largo_ko': 'Tamaño login demasiado largo (max 45 caracteres)',
 	'usuario_formato_ko': 'El login contiene carecteres no permitidos (solo letras sin acentos y números)',
 
 	/////////////////////////////////////////PERSONA////////////////////////////////////////////////////
@@ -133,6 +137,11 @@ arrayES = {
 	'admin_no_se_puede_modificar_KO': 'admin_no_se_puede_modificar_KO',
 	'admin_no_se_puede_borrar_KO': 'admin_no_se_puede_borrar_KO',
 
+	'add_usuario_OK': 'add_usuario_OK',
+	'edit_usuario_OK': 'edit_usuario_OK',
+	'delete_usuario_OK': 'delete_usuario_OK',
+	'search_usuario_OK': 'search_usuario_OK',
+
 	// rol
 	'id_rol_EXISTE_en_usuario_KO': 'id_rol_EXISTE_en_usuario_KO',
 	'no_puede_borrar_rol_adminybasico': 'no_puede_borrar_rol_adminybasico',
@@ -143,11 +152,22 @@ arrayES = {
 
 	'id_rol_EXISTE_en_rolaccionfuncionalidad_KO': 'id_rol_EXISTE_en_rolaccionfuncionalidad_KO',
 
+
+	'add_rol_OK': 'add_rol_OK',
+	'edit_rol_OK': 'edit_rol_OK',
+	'delete_rol_OK': 'delete_rol_OK',
+	'search_rol_OK': 'search_rol_OK',
+
 	// accion
 	'id_accion_EXISTE_en_accion_KO': 'id_accion_EXISTE_en_accion_KO',
 	'id_accion_NO_EXISTE_en_accion_KO': 'id_accion_NO_EXISTE_en_accion_KO',
 	'id_accion_EXISTE_en_rolaccionfuncionalidad_KO': 'id_accion_EXISTE_en_rolaccionfuncionalidad_KO',
 	'no_puede_editar_acciones_admin': 'no_puede_editar_acciones_admin',
+
+	'add_accion_OK': 'add_accion_OK',
+	'edit_accion_OK': 'edit_accion_OK',
+	'delete_accion_OK': 'delete_accion_OK',
+	'search_accion_OK': 'search_accion_OK',
 
 	// funcionalidad
 	'id_funcionalidad_EXISTE_en_funcionalidad_KO': 'id_funcionalidad_EXISTE_en_funcionalidad_KO',
@@ -156,13 +176,22 @@ arrayES = {
 	'no_puede_editar_funcionalidades_admin': 'no_puede_editar_funcionalidades_admin',
 	'no_puede_borrar_funcionalidades_admin': 'no_puede_borrar_funcionalidades_admin',
 
+	'add_funcionalidad_OK': 'add_funcionalidad_OK',
+	'edit_funcionalidad_OK': 'edit_funcionalidad_OK',
+	'delete_funcionalidad_OK': 'delete_funcionalidad_OK',
+	'search_funcionalidad_OK': 'search_funcionalidad_OK',
+
 	// rolaccionfuncionalidad
 	'no_puede_borrar_permiso_admin': 'no_puede_borrar_permiso_admin',
 	'no_puede_editar_permiso_admin': 'no_puede_editar_permiso_admin',
 	'permiso_EXISTE_en_rolaccionfuncionalidad_KO': 'permiso_EXISTE_en_rolaccionfuncionalidad_KO',
 	'permiso_NO_EXISTE_en_rolaccionfuncionalidad_KO': 'permiso_NO_EXISTE_en_rolaccionfuncionalidad_KO',
-	'prohibido_edit_rolaccionfuncionalidad': 'prohibido_edit_rolaccionfuncionalidad'
+	'prohibido_edit_rolaccionfuncionalidad': 'prohibido_edit_rolaccionfuncionalidad',
 
+	'add_rolaccionfuncionalidad_OK': 'add_rolaccionfuncionalidad_OK',
+	'edit_rolaccionfuncionalidad_OK': 'edit_rolaccionfuncionalidad_OK',
+	'delete_rolaccionfuncionalidad_OK': 'delete_rolaccionfuncionalidad_OK',
+	'search_rolaccionfuncionalidad_OK': 'search_rolaccionfuncionalidad_OK',
 
 
 

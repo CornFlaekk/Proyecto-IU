@@ -63,16 +63,17 @@ function comprobar_dni(){
 // comprobar_dni_search()
 // funcion de validación de formato de dni en search
 function comprobar_dni_search(){
-	dni = document.getElementById('id_dni').value;
-	if(dni == null){
-		document.getElementById('id_form_persona').removeAttribute('id_dni');
+	alert(document.getElementById('id_dni').value);
+	if(document.getElementById('id_dni').value == null || document.getElementById('id_dni').value == ''){
+		mensajeOK('id_dni');
+		return true;
 	}
 	if(!size_maximo('id_dni',9)){
 		mensajeKO('id_dni', 'dni_largo_ko');
 		return false;
 	}
 
-	dni = document.getElementById('id_dni').value;
+	//dni = document.getElementById('id_dni').value;
 
 	if (!expr_dni_search('id_dni')){
 		mensajeKO('id_dni', 'dni_formato_search_ko');
@@ -332,6 +333,11 @@ function comprobar_email_persona_search(){
 // comprobar_foto_persona()
 // funcion de validación de formato de foto_persona en acciones que no sean search
 function comprobar_foto_persona(){
+
+	if(document.getElementById('foto_persona') == null){
+		mensajeOK('id_foto_persona');
+		return true;
+	}
 
 	if (!size_minimo('id_foto_persona',6)){
 		mensajeKO('id_foto_persona', 'foto_persona_corto_ko');
