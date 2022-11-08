@@ -379,61 +379,6 @@ function comprobar_foto_persona_search(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// peticionADDpersonaBack()
-// funcion que utilizariamos para hacer una solicitud a back para añadir una persona
-function peticionADDpersonaBack(){
-
-	alert('peticion a back add');
-	ADDpersonaajax();
-	
-}
-
-// peticionEDITpersonaBack()
-// funcion que utilizariamos para hacer una solicitud a back para editar una persona
-function peticionEDITpersonaBack(){
-
-	alert('peticion a back edit');
-	EDITpersonaajax();
-	
-}
-
-// peticionDELETEpersonaBack()
-// funcion que utilizariamos para hacer una solicitud a back para borrar una persona
-function peticionDELETEpersonaBack(){
-
-	alert('peticion a back delete');
-	DELETEpersonaajax();
-	
-}
-
-// peticionSEARCHpersonaBack()
-// funcion que utilizariamos para hacer una solicitud a back para buscar personas
-function peticionSEARCHpersonaBack(){
-	
-	alert('peticion a back search');
-	SEARCHpersonaajax();
-	
-}
-
-
-
-
-
 // add_persona()
 // funcion a ser ejecutada cuando se completa el formulario al pulsar sobre la imagen
 // llama a la funcion de petición pq no es necesario comprobación de formularios.
@@ -441,7 +386,7 @@ function peticionSEARCHpersonaBack(){
 function add_persona(){
 
 	if (comprobar_form_persona_add()){
-		peticionADDpersonaBack();
+		ADDpersonaajax();
 	}
 
 }
@@ -453,7 +398,7 @@ function add_persona(){
 function edit_persona(){
 
 	if (comprobar_form_persona_add()){
-		peticionEDITpersonaBack();
+		EDITpersonaajax();
 	}
 
 }
@@ -464,7 +409,7 @@ function edit_persona(){
 // en esta funcion de petición se provoca el submit para que se ejecute la accion
 function delete_persona(){
 
-	peticionDELETEpersonaBack();
+	DELETEpersonaajax();
 }
 
 // search_persona()
@@ -472,10 +417,9 @@ function delete_persona(){
 // comprueba los formatos de atributo del formulario y devuelve true para que se invoque el action
 function search_persona(){
 
-	//if (comprobar_form_persona_search()){
-		//comprobar_form_persona_search();
-		peticionSEARCHpersonaBack();
-	//}
+	if (comprobar_form_persona_search()){
+		SEARCHpersonaajax();
+	}
 }
 
 // resetearformpersona()
