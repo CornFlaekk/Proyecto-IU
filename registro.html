@@ -1,0 +1,77 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>REGISTRO</title>
+    <script type="text/javascript" src="./js/persona.js"></script>
+    <script type="text/javascript" src="./js/usuario.js"></script>
+    <script type="text/javascript" src="./js/registro.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="./lang/idioma.js"></script>
+    <script type="text/javascript" src="./lang/Lang_ES.js"></script>
+    <script type="text/javascript" src="./lang/Lang_EN.js"></script>
+    <script type="text/javascript" src="./lang/Lang_GA.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+</head>
+
+<body onload="incluircabecera();ponerinvisibleerror();setLang();">
+    <div id='id_caja_superior'>
+    </div>
+    <h1 class="pagina_registro_wellcome"></h1>
+
+    <div id='id_caja_error'>
+        <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20"
+            onclick="cerrarMensajeError();" />
+    </div>
+    <form id='id_form_registro' name='form_registro' action='javascript:registro();' onsubmit='return comprobar_form_registro();'
+        method='post'>
+        <label for="dni"></label>
+        <input class="text_formato_dni" type='text' id='id_dni' name='dni' onblur='comprobar_dni();'></input>
+        <br>
+        <label class="nombre_persona"></label>
+        <input class="text_formato_nombre_persona" type='text' id='id_nombre_persona' name='nombre_persona'
+            onblur='comprobar_nombre_persona();'></input>
+        <br>
+        <label class="apellidos_persona"></label>
+        <input class="text_formato_apellidos_persona" type='text' id='id_apellidos_persona' name='apellidos_persona'
+            onblur='comprobar_apellidos_persona();'></input>
+        <br>
+        <label class="fechaNacimiento_persona"></label>
+        <input class="text_formato_fechaNacimiento_persona" type='date' id='id_fechaNacimiento_persona'
+            name='fechaNacimiento_persona' onblur='comprobar_fechaNacimiento_persona();'></input>
+        <br>
+        <label class="direccion_persona"></label>
+        <input class="text_formato_direccion_persona" type='text' id='id_direccion_persona' name='direccion_persona'
+            onblur='comprobar_direccion_persona();'></input>
+        <br>
+        <label class="telefono_persona"></label>
+        <input class="text_formato_telefono_persona" type='text' id='id_telefono_persona'
+            name='telefono_persona' onblur='comprobar_telefono_persona();'></input>
+        <br>
+        <label class="email_persona"></label>
+        <input class="text_formato_email_persona" type='text' id='id_email_persona' name='email_persona' onblur='comprobar_email_persona();'></input>
+        <br>
+        <label class="foto_persona"></label>
+        <input class="text_formato_foto_persona" type='text' id='id_foto_persona' name='foto_persona' onblur='comprobar_foto_persona();'></input>
+        <br>
+
+        <label for="usuario"></label>
+        <input type='text' id='id_usuario' name='usuario' onblur='comprobar_usuario();'></input>
+        <br>
+        <label class="contrasena"></label>
+        <input type='password' id='id_contrasena' name='contrasena' onblur='comprobar_contrasena();'></input>
+        <br>
+
+
+
+        <br>
+        <input type='submit' value='enviar'>
+    </form>
+    <br><br>
+    <li><a href="login.html">Login</a></li>
+</body>
+
+</html>

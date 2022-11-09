@@ -142,7 +142,7 @@ arrayES = {
 	'dni_EXISTE_en_persona_KO': 'dni_EXISTE_en_persona_KO',
 	'dni_NO_EXISTE_en_persona_KO': 'dni_NO_EXISTE_en_persona_KO',
 
-	'dni_EXISTE_en_usuario_KO': 'dni_EXISTE_EN_usuario_KO',
+	'dni_EXISTE_EN_usuario_KO': 'dni_EXISTE_EN_usuario_KO',
 	'dni_NO_EXISTE_en_usuario_KO': 'dni_NO_EXISTE_en_usuario_KO',
 
 	'email_EXISTE_en_persona_KO': 'email_EXISTE_en_persona_KO',

@@ -22,7 +22,7 @@ function incluircabecera(){
 	
 		if ((getCookie('usuarioSistema')==null) || (getCookie('usuarioSistema') =='')){
 
-			cadena = /login*/;
+			cadena = /login.html|registro.html*/;
 			encontrado = cadena.test(window.location.href);
 			if(!encontrado){
 			window.location.href = "login.html";
@@ -133,7 +133,7 @@ function mensajeHTTPFAIL(status){
 
 
 function cerrarMensajeError(){
-	document.getElementById('id_texterror').classList.remove;
+	document.getElementById('id_texterror').classList.remove(document.getElementById('id_texterror').classList);
 	//codigoanterior = document.getElementById('id_texterror').classList;
 	//document.getElementById('id_texterror').classList.remove(codigoanterior);
 	document.getElementById('id_caja_error').style.display = 'none';
@@ -326,6 +326,19 @@ function caracteres_descripcion(idElemento){
 		return true;
 	}
 }
+
+function caracteres_contrasena(idElemento){
+
+	caracteres = /^[A-Za-z0-9\-\_]+$/;
+	valido = caracteres.test(document.getElementById(idElemento).value);
+	if(!valido){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
 
 function encriptarpassword(){
 	document.getElementById('id_contrasena').value = hex_md5(document.getElementById('id_contrasena').value);
