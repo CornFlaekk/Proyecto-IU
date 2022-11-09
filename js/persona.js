@@ -63,7 +63,6 @@ function comprobar_dni(){
 // comprobar_dni_search()
 // funcion de validación de formato de dni en search
 function comprobar_dni_search(){
-	alert(document.getElementById('id_dni').value);
 	if(document.getElementById('id_dni').value == null || document.getElementById('id_dni').value == ''){
 		mensajeOK('id_dni');
 		return true;
@@ -111,6 +110,11 @@ function comprobar_nombre_persona(){
 // funcion de validación de formato de nombre_persona en search
 function comprobar_nombre_persona_search(){
 	
+	if(document.getElementById('id_nombre_persona').value == null || document.getElementById('id_nombre_persona').value == ''){
+		mensajeOK('id_nombre_persona');
+		return true;
+	}
+
 	if (!size_maximo('id_nombre_persona',45)){
 		mensajeKO('id_nombre_persona', 'Tamaño nombre demasiado largo (max 45 caracteres)');
 		return false;
@@ -149,7 +153,11 @@ function comprobar_apellidos_persona(){
 // comprobar_apellidos_persona_search()
 // funcion de validación de formato de nombre_persona en search
 function comprobar_apellidos_persona_search(){
-	
+
+	if(document.getElementById('id_apellidos_persona').value == null || document.getElementById('id_apellidos_persona').value == ''){
+		mensajeOK('id_apellidos_persona');
+		return true;
+	}
 	if (!size_maximo('id_apellidos_persona',100)){
 		mensajeKO('id_apellidos_persona', 'apellidos_persona_largo_ko');
 		return false;
@@ -189,6 +197,10 @@ function comprobar_fechaNacimiento_persona(){
 // funcion de validación de formato de fechaNacimiento_persona en search
 function comprobar_fechaNacimiento_persona_search(){
 	
+	if(document.getElementById('id_fechaNacimiento_persona').value == null || document.getElementById('id_fechaNacimiento_persona').value == ''){
+		mensajeOK('id_fechaNacimiento_persona');
+		return true;
+	}
 	if (!size_maximo('id_fechaNacimiento_persona',10)){
 		mensajeKO('id_fechaNacimiento_persona', 'fechaNacimiento_persona_largo_ko');
 		return false;
@@ -229,6 +241,10 @@ function comprobar_direccion_persona(){
 // funcion de validación de formato de direccion_persona en search
 function comprobar_direccion_persona_search(){
 	
+	if(document.getElementById('id_direccion_persona').value == null || document.getElementById('id_direccion_persona').value == ''){
+		mensajeOK('id_direccion_persona');
+		return true;
+	}
 	if (!size_maximo('id_direccion_persona',200)){
 		mensajeKO('id_direccion_persona', 'direccion_persona_largo_ko');
 		return false;
@@ -273,6 +289,10 @@ function comprobar_telefono_persona(){
 // funcion de validación de formato de telefono_persona en search
 function comprobar_telefono_persona_search(){
 	
+	if(document.getElementById('id_telefono_persona').value == null || document.getElementById('id_telefono_persona').value == ''){
+		mensajeOK('id_telefono_persona');
+		return true;
+	}
 	if (!size_maximo('id_telefono_persona',9)){
 		mensajeKO('id_telefono_persona', 'telefono_persona_largo_ko');
 		return false;
@@ -317,6 +337,10 @@ function comprobar_email_persona(){
 // funcion de validación de formato de email_persona en search
 function comprobar_email_persona_search(){
 	
+	if(document.getElementById('id_email_persona').value == null || document.getElementById('id_email_persona').value == ''){
+		mensajeOK('id_email_persona');
+		return true;
+	}
 	if (!size_maximo('id_email_persona',45)){
 		mensajeKO('id_email_persona', 'email_persona_largo_ko');
 		return false;
@@ -334,7 +358,7 @@ function comprobar_email_persona_search(){
 // funcion de validación de formato de foto_persona en acciones que no sean search
 function comprobar_foto_persona(){
 
-	if(document.getElementById('foto_persona') == null){
+	if(document.getElementById('id_foto_persona').value.length == 0){
 		mensajeOK('id_foto_persona');
 		return true;
 	}
@@ -367,6 +391,10 @@ function comprobar_foto_persona(){
 // funcion de validación de formato de foto_persona en search
 function comprobar_foto_persona_search(){
 	
+	if(document.getElementById('id_foto_persona').value == null || document.getElementById('id_foto_persona').value == ''){
+		mensajeOK('id_foto_persona');
+		return true;
+	}
 	if (!size_maximo('id_foto_persona',40)){
 		mensajeKO('id_foto_persona', 'foto_persona_largo_ko');
 		return false;

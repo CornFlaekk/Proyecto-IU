@@ -37,25 +37,6 @@ function incluircabecera(){
 
 }
 
-function incluircabecera2(){
-
-	$("#id_caja_superior").html = "";
-	let incluir = "<table id='id_tabla_idiomas'>"+
-        "<tr>"+
-          "<td onclick=\"setLang(\'ES\');\">ES</td>"+
-          "<td onclick=\"setLang(\'EN\');\">EN</td>"+
-          "<td onclick=\"setLang(\'GA\');\">GA</td>"+
-        "</tr>"+
-      "</table>";
-      
-      if (getCookie('usuarioSistema')===null){
-      	let temp = "Usuario :"+getCookie('usuarioSistema');
-      	incluir += temp+"<br><a href='javascript:desconectar();'>Desconectar</a>";
-      }
-
-    $("#id_caja_superior").append(incluir);
-
-}
 
 function ponerinvisibleerror(){
 	document.getElementById('id_caja_error').style.display='none';
@@ -67,6 +48,9 @@ function ponerinvisibleformusuario(){
 
 function ponerinvisibleformpersona(){
 	document.getElementById('id_caja_formulario_persona').style.display = 'none';
+}
+function ponerinvisibleformrol(){
+	document.getElementById('id_caja_formulario_rol').style.display = 'none';
 }
 
 function mensajeKO(idElemento, codigoerror){
@@ -171,6 +155,18 @@ function size_maximo(idElemento,longitudmaxima){
 	
 	elemento = document.getElementById(idElemento).value;
 	if (elemento.length > longitudmaxima){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+function letras_sin_acento(idElemento){
+
+	caracteres = /^[a-zA-Z]+$/;
+	valido = caracteres.test(document.getElementById(idElemento).value);
+	if(!valido){
 		return false;
 	}
 	else{
@@ -311,6 +307,19 @@ function expr_direccion(idElemento){
 	caracteres = /^[a-zA-Z0-9Á-ÿ\s\/\-\,\'\º\ª]+$/;
 	valido = caracteres.test(document.getElementById(idElemento).value);
 	if(!valido){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+
+function caracteres_descripcion(idElemento){
+
+	caracteres = /[\=\<\>\$\#\{\}\[\]]/;
+	invalido = caracteres.test(document.getElementById(idElemento).value);
+	if(invalido){
 		return false;
 	}
 	else{
