@@ -125,7 +125,9 @@ function crearTablaRafBody(raf) {
     let i = 0;  //contador roles
 
     let datosfila = '<tr><td>' + raf[0].id_funcionalidad.nombre_funcionalidad + '</td><td>' + raf[0].id_accion.nombre_accion + '</td>';
+    alert(raf.length);
     while (i < raf.length) {
+        //alert(i);
         funAct = raf[i].id_funcionalidad.id_funcionalidad;
         accAct = raf[i].id_accion.id_accion;
 
@@ -155,10 +157,13 @@ function crearTablaRafBody(raf) {
                 datosfila += texto;
             }
 
-            datosfila += '</td>';
+            datosfila += '</tr>';
             $("#id_datosraf").append(datosfila)
-            datosfila = '<td>';
-            j = 0;z
+            datosfila = '<tr><td>' + raf[i].id_funcionalidad.nombre_funcionalidad + '</td><td>' + raf[i].id_accion.nombre_accion + '</td>';
+            j = 0;
+            //i++;
+            funPrev = raf[i].id_funcionalidad.id_funcionalidad;
+            accPrev = raf[i].id_accion.id_accion;
 
         }
 
