@@ -179,19 +179,24 @@ function search_rol(){
 // aqui solo eliminamos el select. Podriamos tambien hacer un remove() en vez de desasignarlo
 function resetearformrol(){
 
+	document.getElementById('id_id_rol_label').style.display = 'inline';
+	document.getElementById('id_id_rol').style.display = 'inline';
 
 	// quitar el readonly de los atributos
 	$("#id_id_rol").attr('readonly',false);
 	$("#id_id_rol").val('');
 	$("#id_id_rol").on('blur',false);
+	document.getElementById('id_id_rol').onblur = "";
 	document.getElementById('id_id_rol').style.borderColor = "#676774";
 
 	$("#id_nombre_rol").attr('readonly',false);
 	$("#id_nombre_rol").val('');
+	document.getElementById('id_nombre_rol').onblur = "";
 	document.getElementById('id_nombre_rol').style.borderColor = "#676774";
 
 	$("#id_descrip_rol").attr('readonly',false);
 	$("#id_descrip_rol").val('');
+	document.getElementById('id_descrip_rol').onblur = "";
 	document.getElementById('id_descrip_rol').style.borderColor = "#676774";
 
 
@@ -225,9 +230,9 @@ function crearformADDrol(){
 	// se rellena el action del formulario
 	document.getElementById('id_form_rol').action = 'http://193.147.87.202/procesaform.php';
 	
-	// se coloca el onblur del id_rol y se pone a vacio el valor (o podriamos hacerlo en el resetearformrol())
-	document.getElementById('id_id_rol').onblur = comprobar_id_rol;
-	document.getElementById('id_id_rol').value = '';
+	// se elimina el id_rol
+	document.getElementById('id_id_rol_label').style.display = 'none';
+	document.getElementById('id_id_rol').style.display = 'none';
 
 	// se coloca el onblur del nombre_rol y se pone a vacio el valor (o podriamos hacerlo en el resetearformrol())
 	document.getElementById('id_nombre_rol').onblur = comprobar_nombre_rol;

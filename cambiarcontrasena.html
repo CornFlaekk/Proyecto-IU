@@ -1,0 +1,54 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Cambio Contraseña</title>
+    <script type="text/javascript" src="./js/persona.js"></script>
+    <script type="text/javascript" src="./js/cambiarcontrasena.js"></script>
+    <script type="text/javascript" src="./js/usuario.js"></script>
+    <script type="text/javascript" src="./js/registro.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="./lang/idioma.js"></script>
+    <script type="text/javascript" src="./lang/Lang_ES.js"></script>
+    <script type="text/javascript" src="./lang/Lang_EN.js"></script>
+    <script type="text/javascript" src="./lang/Lang_GA.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+</head>
+
+<body onload="incluircabecera();ponerinvisibleerror();setLang();cargar_usuario();">
+    <div id='id_caja_superior'>
+    </div>
+    <h1 class="pagina_cambiar_contrasena_wellcome"></h1>
+    <a href="menu.html"><p class='titulo_volver'></p></a><br>
+
+    <div id='id_caja_error'>
+        <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20"
+            onclick="cerrarMensajeError();" />
+    </div>
+    <form id='id_form_registro' name='form_registro' action='javascript:cambiarContrasenaAjax();'
+         method='post'>
+
+        <label id="id_dni" value="" hidden></label>
+        <br>
+        <label class="usuario"></label>
+        <label id="id_nombre_usuario" value="a"></label>
+        <br>
+
+        <label class="contrasena"></label>
+        <input type='password' class="contrasena" type='text' id='id_contrasena' name='contrasena'
+            onblur='comprobar_contrasena();'></input>
+        <br>
+
+        <label class="contrasena_repetir"></label>
+        <input type='password' class="contrasena_repetir" type='text' id='id_contrasena_repetir' name='contrasena_repetir'
+            onblur='comprobar_contrasena_igual();'></input>
+
+        <br>
+        <input type='submit' value='enviar'>
+    </form>
+</body>
+
+</html>

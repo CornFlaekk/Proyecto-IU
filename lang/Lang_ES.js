@@ -40,13 +40,22 @@ arrayES = {
 	/////////////////////////////////////////USUARIO////////////////////////////////////////////////////
 
 	'pagina_usuario_wellcome': 'Gestión de usuarios',
+	'pagina_cambiar_contrasena_wellcome': 'Cambiar Contraseña',
 
 	'usuario': 'Login Usuario',
 	'contrasena': 'Contraseña',
+	'contrasena_repetir': 'Repetir contraseña',
 
 	'usuario_corto_ko': 'Tamaño login demasiado corto (min 3 caracteres)',
 	'usuario_largo_ko': 'Tamaño login demasiado largo (max 45 caracteres)',
 	'usuario_formato_ko': 'El login contiene carecteres no permitidos (solo letras sin acentos y números)',
+
+	'contrasena_corto_ko': 'contrasena_corto_ko',
+	'contrasena_largo_ko': 'contrasena_largo_ko',
+	'contrasena_formato_ko': 'contrasena_formato_ko',
+
+
+	'contrasena_igual_ko': 'Las contraseñas no coinciden',
 
 	/////////////////////////////////////////PERSONA////////////////////////////////////////////////////
 

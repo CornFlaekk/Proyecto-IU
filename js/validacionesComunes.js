@@ -30,7 +30,7 @@ function incluircabecera(){
 			
 		}else{
 			let temp = "Usuario :"+getCookie('usuarioSistema');
-			incluir += temp+"<br><a href='javascript:desconectar();'>Desconectar</a>";
+			incluir += temp+"<br><a href='cambiarcontrasena.html'>Cambiar Contraseña</a><b>"+'&emsp;'+"</b><a href='javascript:desconectar();'>Desconectar</a>";
 		}
 
     $("#id_caja_superior").append(incluir);
@@ -55,6 +55,7 @@ function ponerinvisibleformrol(){
 
 function mensajeKO(idElemento, codigoerror){
 
+	cerrarMensajeError();
 	document.getElementById('id_texterror').classList.add(codigoerror); 
 	document.getElementById('id_caja_error').style.display = 'block';
 	document.getElementById(idElemento).style.borderColor = "#ff0000";
@@ -62,6 +63,11 @@ function mensajeKO(idElemento, codigoerror){
 }
 
 function mensajeOK(idElemento){
+
+	cerrarMensajeError();
+	document.getElementById('id_texterror').innerHTML = '';
+
+
 
 	document.getElementById('id_texterror').innerHTML = '';
 	document.getElementById('id_caja_error').style.display = 'none';
@@ -99,6 +105,7 @@ function insertacampo(idform, name, value){
 
 function mensajeactionOK(codigo){
 
+	cerrarMensajeError();
 	document.getElementById('id_texterror').classList.add(codigo);
 	document.getElementById('id_caja_error').style.borderColor = "#00e600"; 
 	document.getElementById('id_caja_error').style.display = 'block';
@@ -108,6 +115,7 @@ function mensajeactionOK(codigo){
 
 function mensajeFAIL(codigoerror){
 
+	cerrarMensajeError();
 	//document.getElementById('id_texterror').innerHTML = codigoerror;
 	document.getElementById('id_texterror').classList.add(codigoerror); 
 	document.getElementById('id_caja_error').style.display = 'block';
@@ -133,7 +141,12 @@ function mensajeHTTPFAIL(status){
 
 
 function cerrarMensajeError(){
-	document.getElementById('id_texterror').classList.remove(document.getElementById('id_texterror').classList);
+
+	if(document.getElementById('id_texterror').classList.length > 0 ){
+		document.getElementById('id_texterror').classList.remove(document.getElementById('id_texterror').classList);
+		
+	}
+	//document.getElementById('id_texterror').classList.remove(document.getElementById('id_texterror').classList);
 	//codigoanterior = document.getElementById('id_texterror').classList;
 	//document.getElementById('id_texterror').classList.remove(codigoanterior);
 	document.getElementById('id_caja_error').style.display = 'none';
