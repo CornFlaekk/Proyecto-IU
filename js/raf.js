@@ -62,6 +62,8 @@ function crearTablaRafHead(data) {
 
 
 function crearTablaRaf() {
+    document.getElementById('id_datostabla').innerHTML = "";
+    document.getElementById('id_datosraf').innerHTML = "";
     devolverrolesajax();
     devolverRafAjax();
 }
@@ -115,63 +117,102 @@ async function devolverRafAjax() {
 
 function crearTablaRafBody(raf) {
 
-    //alert(roles.length);
-
     let funPrev = raf[0].id_funcionalidad.id_funcionalidad;
     let accPrev = raf[0].id_accion.id_accion;
-    //alert(funPrev);
 
     let j = 0;  //contador raf
     let i = 0;  //contador roles
 
     let datosfila = '<tr><td>' + raf[0].id_funcionalidad.nombre_funcionalidad + '</td><td>' + raf[0].id_accion.nombre_accion + '</td>';
-    alert(raf.length);
+
     while (i < raf.length) {
-        //alert(i);
+
         funAct = raf[i].id_funcionalidad.id_funcionalidad;
         accAct = raf[i].id_accion.id_accion;
 
-
-
         if (funAct == funPrev && accAct == accPrev) {
-
             if (raf[i].id_rol.id_rol == roles[j].id_rol) {
-
                 //Se añade en caso de que exista para ese rol
-                texto = '<td>' + '+' + '</td>';
+                texto = '<td>' + '<img src="./images/mas_gris.png" width="20" height="20">' + '<b>&emsp;</b>' + '<img src="./images/menos.png" width="20" height="20" onclick="DELETERafAjax(' + raf[i].id_rol.id_rol + ',' + raf[i].id_accion.id_accion + ',' + raf[i].id_funcionalidad.id_funcionalidad + ');">' + '</td>';
                 datosfila += texto;
                 j++;
                 i++;
-
             } else {
-
-                texto = '<td>' + '-' + '</td>';
+                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + raf[i].id_rol.id_rol + ',' + raf[i].id_accion.id_accion + ',' + raf[i].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
                 datosfila += texto;
                 j++;
-
             }
         } else {
-
-            for(j; j<roles.length; j++){
-                texto = '<td>' + '-' + '</td>';
+            for (j; j < roles.length; j++) {
+                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + raf[i].id_rol.id_rol + ',' + raf[i].id_accion.id_accion + ',' + raf[i].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
                 datosfila += texto;
             }
-
             datosfila += '</tr>';
             $("#id_datosraf").append(datosfila)
             datosfila = '<tr><td>' + raf[i].id_funcionalidad.nombre_funcionalidad + '</td><td>' + raf[i].id_accion.nombre_accion + '</td>';
             j = 0;
-            //i++;
             funPrev = raf[i].id_funcionalidad.id_funcionalidad;
             accPrev = raf[i].id_accion.id_accion;
-
         }
-
-
-
-
     }
+}
 
+
+
+
+//Función ajax con promesas
+function ADDRafAjaxPromesa(id_rol, id_accion, id_funcionalidad) {
+
+    crearformoculto('form_generico', '');
+    insertacampo('form_generico', 'controlador', 'rolaccionfuncionalidad');
+    insertacampo('form_generico', 'action', 'ADD');
+    insertacampo('form_generico', 'id_rol', id_rol);
+    insertacampo('form_generico', 'id_accion', id_accion);
+    insertacampo('form_generico', 'id_funcionalidad', id_funcionalidad);
+
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            method: "POST",
+            url: "http://193.147.87.202/Back/index.php",
+            data: $("#form_generico").serialize(),
+        }).done(res => {
+            if (res.ok != true) {
+                alert('res.ok != true');
+                reject(res);
+            }
+            else {
+                alert('res.ok == true');
+                resolve(res);
+            }
+        })
+            .fail(function (jqXHR) {
+                alert('fail!!!:' + jqXHR.status);
+                mensajeHTTPFAIL(jqXHR.status);
+            });
+    }
+    )
+}
+
+
+async function ADDRafAjax(id_rol, id_accion, id_funcionalidad) {
+
+    var idioma = getCookie('lang');
+
+    await ADDRafAjaxPromesa(id_rol, id_accion, id_funcionalidad)
+        .then((res) => {
+
+            if (res.code = 'SQL_OK') {
+                res.code = 'add_rolaccionfuncionalidad_OK';
+            }
+            crearTablaRaf();
+            mensajeactionOK(res.code);
+        })
+        .catch((res) => {
+            alert('.catch');
+            mensajeFAIL(res.code);
+        });
+    setLang();
+    document.getElementById('form_generico').remove();
 
 }
 
@@ -180,29 +221,56 @@ function crearTablaRafBody(raf) {
 
 
 
+function DELETERafAjaxPromesa(id_rol, id_accion, id_funcionalidad) {
 
-
-
-
-function getListRoles(listaroles) {
-
-    document.getElementById('id_datosroles').innerHTML = '';
-
-    for (let rol of listaroles) {
-
-        datosfila = "'" + rol.id_rol + "'," + "'" + rol.nombre_rol + "'," + "'" + rol.descrip_rol + "'";
-
-        lineatabla = '<tr><td>' + rol['id_rol'] + '</td><td>' + rol['nombre_rol'] + '</td><td>' + rol['descrip_rol'] + "</td>";
-
-        botonedit = '<td><img class="titulo_edit" src="./images/edit4.png" onclick="crearformEDITrol(' + datosfila + ');" width="50" height="50"></td>';
-        botondelete = '<td><img class="titulo_delete" src="./images/delete4.png" width="50" height="50" onclick="crearformDELETErol(' + datosfila + ');"></td>';
-        botonshowcurrent = '<td><img class="titulo_showcurrent" src="./images/detail4.png" width="50" height="50" onclick="crearformSHOWCURRENTrol(' + datosfila + ')";></td>';
-
-        lineatabla += botonedit + botondelete + botonshowcurrent + "</tr>";
-
-        $("#id_datosroles").append(lineatabla);
-
-
+    crearformoculto('form_generico', '');
+    insertacampo('form_generico', 'controlador', 'rolaccionfuncionalidad');
+    insertacampo('form_generico', 'action', 'DELETE');
+    insertacampo('form_generico', 'id_rol', id_rol);
+    insertacampo('form_generico', 'id_accion', id_accion);
+    insertacampo('form_generico', 'id_funcionalidad', id_funcionalidad);
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            method: "POST",
+            url: "http://193.147.87.202/Back/index.php",
+            data: $("#form_generico").serialize(),
+        }).done(res => {
+            if (res.ok != true) {
+                alert('res.ok != true');
+                reject(res);
+            }
+            else {
+                alert('res.ok == true');
+                resolve(res);
+            }
+        })
+            .fail(function (jqXHR) {
+                alert('fail!!!:' + jqXHR.status);
+                mensajeHTTPFAIL(jqXHR.status);
+            });
     }
-
+    )
 }
+
+
+async function DELETERafAjax(id_rol, id_accion, id_funcionalidad) {
+
+    var idioma = getCookie('lang');
+
+    await DELETERafAjaxPromesa(id_rol, id_accion, id_funcionalidad)
+        .then((res) => {
+
+            if (res.code = 'SQL_OK') {
+                res.code = 'delete_rolaccionfuncionalidad_OK';
+            }
+            crearTablaRaf();
+            mensajeactionOK(res.code);
+        })
+        .catch((res) => {
+            alert('.catch');
+            mensajeFAIL(res.code);
+        });
+    setLang();
+    document.getElementById('form_generico').remove();
+}
+
