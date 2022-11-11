@@ -57,6 +57,10 @@ function ponerinvisibleformaccion(){
 	document.getElementById('id_caja_formulario_accion').style.display = 'none';
 }
 
+function ponerinvisibleformfuncionalidad(){
+	document.getElementById('id_caja_formulario_funcionalidad').style.display = 'none';
+}
+
 function ponerinvisibleformraf(){
 	document.getElementById('id_caja_formulario_raf').style.display = 'none';
 }
@@ -67,20 +71,15 @@ function mensajeKO(idElemento, codigoerror){
 	cerrarMensajeError();
 	document.getElementById('id_texterror').classList.add(codigoerror); 
 	document.getElementById('id_caja_error').style.display = 'block';
-	document.getElementById(idElemento).style.borderColor = "#ff0000";
+	document.getElementById(idElemento).style.borderColor = "#E97777";
 	setLang();
 }
 
 function mensajeOK(idElemento){
 
-	cerrarMensajeError();
-	document.getElementById('id_texterror').innerHTML = '';
-
-
-
 	document.getElementById('id_texterror').innerHTML = '';
 	document.getElementById('id_caja_error').style.display = 'none';
-	document.getElementById(idElemento).style.borderColor = "#00e600";
+	document.getElementById(idElemento).style.borderColor = "#90C8AC";
 	setLang();
 }
 
@@ -116,7 +115,8 @@ function mensajeactionOK(codigo){
 
 	cerrarMensajeError();
 	document.getElementById('id_texterror').classList.add(codigo);
-	document.getElementById('id_caja_error').style.borderColor = "#00e600"; 
+	//document.getElementById('id_caja_error').style.borderColor = "#00e600"; 
+	document.getElementById('id_caja_error').style = "color: #90C8AC";
 	document.getElementById('id_caja_error').style.display = 'block';
 	setLang();
 
@@ -126,7 +126,8 @@ function mensajeFAIL(codigoerror){
 
 	cerrarMensajeError();
 	//document.getElementById('id_texterror').innerHTML = codigoerror;
-	document.getElementById('id_texterror').classList.add(codigoerror); 
+	document.getElementById('id_texterror').classList.add(codigoerror);
+	document.getElementById('id_caja_error').style = "color: #E97777";
 	document.getElementById('id_caja_error').style.display = 'block';
 	setLang();
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title class="titulo_funcionalidad"></title>
+    <script type="text/javascript" src="./js/funcionalidad.js"></script>
+    <script type="text/javascript" src="./lang/idioma.js"></script>
+    <script type="text/javascript" src="./lang/Lang_ES.js"></script>
+    <script type="text/javascript" src="./lang/Lang_EN.js"></script>
+    <script type="text/javascript" src="./lang/Lang_GA.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+  </head>
+  <body onload="ponerinvisibleerror();ponerinvisibleformfuncionalidad();devolverfuncionalidadesajax();setLang();incluircabecera();">
+    <div id='id_caja_superior'>
+    </div>
+    <h1 class="titulo_funcionalidad"></h1>
+    <a href="menu.html"><p class='titulo_volver'></p></a><br>
+    <div id='id_caja_error'>
+      <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20" onclick="cerrarMensajeError();"/>
+    </div>
+    <img class='titulo_add' src='./images/add4.png' height="80" width="80" onclick="crearformADDfuncionalidad();">
+    <img class='titulo_search' src='./images/search4.png' height="60" width="60" onclick="crearformSEARCHfuncionalidad();">
+    <div>
+      <table id='id_tablaFuncionalidades' border='1'>
+        <th class="id_funcionalidad">
+        </th>
+        <th class="nombre_funcionalidad">
+        </th>
+        <th class="descrip_funcionalidad">
+        </th>
+        <th class="titulo_edit">
+        </th>
+        <th class="titulo_delete">
+        </th>
+        <th class="titulo_showcurrent">
+        </th>
+      </thead>
+      <tbody id='id_datosfuncionalidades'>
+      </tbody>
+    </table>
+  </div>
+  <div id='id_caja_formulario_funcionalidad'>
+    <form id='id_form_funcionalidad' name='form_funcionalidad' method='post'>
+
+      <label class='id_funcionalidad' id="id_id_funcionalidad_label"></label>
+      <input class="text_formato_id_funcionalidad" type='text' id='id_id_funcionalidad' name='id_funcionalidad' placeholder=""></input>
+      <br>
+      <label class="nombre_funcionalidad"></label>
+      <input class="text_formato_nombre_funcionalidad" type='text' id='id_nombre_funcionalidad' name='nombre_funcionalidad'></input>
+      <br>
+      <label class="descrip_funcionalidad"></label>
+      <input class="text_formato_descrip_funcionalidad" type='text' id='id_descrip_funcionalidad' name='descrip_funcionalidad'></input>
+      <br>
+
+    </form>
+    <br>
+      <img src='' height="80" width="80" id="id_imagen_enviar_form" name="imagen_enviar_form">
+  </div>
+</body>
+</html>

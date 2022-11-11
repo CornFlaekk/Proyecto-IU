@@ -158,6 +158,25 @@ arrayES = {
 	'descrip_accion_caracteres_ko': 'descrip_accion_caracteres_ko',
 
 
+	/////////////////////////////////////////////FUNCIONALIDAD////////////////////////////////////////////
+
+	'titulo_funcionalidad': 'Gestión Funcionalidades',
+
+	'id_funcionalidad': 'Identificador',
+	'nombre_funcionalidad': 'Nombre',
+	'descrip_funcionalidad': 'Descripción',
+
+
+	//nombre
+	'nombre_funcionalidad_corto_ko': 'nombre_funcionalidad_corto_ko',
+	'nombre_funcionalidad_largo_ko': 'nombre_funcionalidad_largo_ko',
+	'nombre_funcionalidad_formato_ko': 'nombre_funcionalidad_formato_ko',
+
+	//descrip
+	'descrip_funcionalidad_corto_ko': 'descrip_funcionalidad_corto_ko',
+	'descrip_funcionalidad_largo_ko': 'descrip_funcionalidad_largo_ko',
+	'descrip_funcionalidad_caracteres_ko': 'descrip_funcionalidad_caracteres_ko',
+
 	///////////////////////////////////ROLACCIONFUNCIONALIDAD////////////////////////////////////////////
 
 
