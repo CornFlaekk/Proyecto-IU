@@ -29,8 +29,8 @@ function incluircabecera(){
 			}
 			
 		}else{
-			let temp = "Usuario :"+getCookie('usuarioSistema');
-			incluir += temp+"<br><a href='cambiarcontrasena.html'>Cambiar Contraseña</a><b>"+'&emsp;'+"</b><a href='javascript:desconectar();'>Desconectar</a>";
+			let temp = "<i class='usuario'></i> :"+getCookie('usuarioSistema');
+			incluir += temp+"<br><a href='cambiarcontrasena.html' class='titulo_contrasena'></a><b>"+'&emsp;'+"</b><a href='javascript:desconectar();' class='titulo_desconectar' ></a>";
 		}
 
     $("#id_caja_superior").append(incluir);
