@@ -10,6 +10,8 @@ arrayES = {
 	'titulo_volver': 'Volver',
 	'titulo_refersh': 'Refrescar',
 
+	'boton_enviar': 'Enviar',
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////Códigos FRONT//////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,9 +52,9 @@ arrayES = {
 	'usuario_largo_ko': 'Tamaño login demasiado largo (max 45 caracteres)',
 	'usuario_formato_ko': 'El login contiene carecteres no permitidos (solo letras sin acentos y números)',
 
-	'contrasena_corto_ko': 'contrasena_corto_ko',
-	'contrasena_largo_ko': 'contrasena_largo_ko',
-	'contrasena_formato_ko': 'contrasena_formato_ko',
+	'contrasena_corto_ko': 'La contraseña es demasiado corta (Mínimo 3 caracteres)',
+	'contrasena_largo_ko': 'La contraseña es demasiado larga (Máximo 45 caracteres)',
+	'contrasena_formato_ko': 'La contraseña contiene caracteres no válidos (Se permiten caracteres alfabéticos sin acentos, números, "-" y "_")',
 
 
 	'contrasena_igual_ko': 'Las contraseñas no coinciden',
@@ -73,11 +75,11 @@ arrayES = {
 
 
 	//dni
-	'dni_corto_ko': 'dni_corto_ko',
-	'dni_largo_ko': 'dni_largo_ko',
-	'dni_formato_ko': 'dni_formato_ko',
-	'dni_letra_ko': 'dni_letra_ko',
-	'dni_formato_search_ko': 'dni_formato_search_ko',
+	'dni_corto_ko': 'Tamaño DNI demasiado corto (8 Números y 1 Letra)',
+	'dni_largo_ko': 'Tamaño DNI demasiado corto (8 Números y 1 Letra)',
+	'dni_formato_ko': 'Formato de DNI incorrecto (8 Números y 1 Letra)',
+	'dni_letra_ko': 'La letra del dni no se corresponde con los números',
+	'dni_formato_search_ko': 'El valor para búsqueda de DNI no es correcto',
 
 	//nombre
 	'nombre_persona_corto_ko': 'Tamaño nombre demasiado corto (min 3 caracteres)',
@@ -128,14 +130,14 @@ arrayES = {
 	'descrip_rol': 'Descripción',
 
 	//nombre
-	'nombre_rol_corto_ko': 'nombre_rol_corto_ko',
-	'nombre_rol_largo_ko': 'nombre_rol_largo_ko',
-	'nombre_rol_formato_ko': 'nombre_rol_formato_ko',
+	'nombre_rol_corto_ko': 'El campo nombre de rol no puede tener menos de 6 caracteres',
+	'nombre_rol_largo_ko': 'El campo nombre de rol no puede tener más de 48 caracteres',
+	'nombre_rol_formato_ko': 'El campo nombre de rol debe estar formado por caracteres alfabéticos sin acento',
 
 	//descrip
-	'descrip_rol_corto_ko': 'descrip_rol_corto_ko',
-	'descrip_rol_largo_ko': 'descrip_rol_largo_ko',
-	'descrip_rol_caracteres_ko': 'descrip_rol_caracteres_ko',
+	'descrip_rol_corto_ko': 'La descripción del rol debe tener al menos 20 caracteres',
+	'descrip_rol_largo_ko': 'La descripción del rol debe tener como máximo 200 caracteres',
+	'descrip_rol_caracteres_ko': '‘La descripción del rol no puede contener los siguientes caracteres: =<>$#{}[]',
 
 
 
@@ -149,14 +151,14 @@ arrayES = {
 
 
 	//nombre
-	'nombre_accion_corto_ko': 'nombre_accion_corto_ko',
-	'nombre_accion_largo_ko': 'nombre_accion_largo_ko',
-	'nombre_accion_formato_ko': 'nombre_accion_formato_ko',
+	'nombre_accion_corto_ko': 'El campo nombre de acción no puede tener menos de 6 caracteres',
+	'nombre_accion_largo_ko': 'El campo nombre de acción no puede tener más de 48 caracteres',
+	'nombre_accion_formato_ko': 'El campo nombre de acción debe estar formado por caracteres alfabéticos sin acento',
 
 	//descrip
-	'descrip_accion_corto_ko': 'descrip_accion_corto_ko',
-	'descrip_accion_largo_ko': 'descrip_accion_largo_ko',
-	'descrip_accion_caracteres_ko': 'descrip_accion_caracteres_ko',
+	'descrip_accion_corto_ko': 'Descripción de acción debe tener al menos 20 caracteres',
+	'descrip_accion_largo_ko': 'Descripción de acción debe tener como máximo 200 caracteres',
+	'descrip_accion_caracteres_ko': 'Descripción de acción no puede contener los siguientes caracteres: =<>$#{}[]',
 
 
 	/////////////////////////////////////////////FUNCIONALIDAD////////////////////////////////////////////
@@ -169,14 +171,14 @@ arrayES = {
 
 
 	//nombre
-	'nombre_funcionalidad_corto_ko': 'nombre_funcionalidad_corto_ko',
-	'nombre_funcionalidad_largo_ko': 'nombre_funcionalidad_largo_ko',
-	'nombre_funcionalidad_formato_ko': 'nombre_funcionalidad_formato_ko',
+	'nombre_funcionalidad_corto_ko': 'El campo nombre de funcionalidad no puede tener menos de 6 caracteres',
+	'nombre_funcionalidad_largo_ko': 'El campo nombre de funcionalidad no puede tener más de 48 caracteres',
+	'nombre_funcionalidad_formato_ko': 'El campo nombre de funcionalidad debe estar formado por caracteres alfabéticos sin acento',
 
 	//descrip
-	'descrip_funcionalidad_corto_ko': 'descrip_funcionalidad_corto_ko',
-	'descrip_funcionalidad_largo_ko': 'descrip_funcionalidad_largo_ko',
-	'descrip_funcionalidad_caracteres_ko': 'descrip_funcionalidad_caracteres_ko',
+	'descrip_funcionalidad_corto_ko': 'Descripción de funcionalidad debe tener al menos 20 caracteres',
+	'descrip_funcionalidad_largo_ko': 'Descripción de funcionalidad debe tener como máximo 200 caracteres',
+	'descrip_funcionalidad_caracteres_ko': 'Descripción de funcionalidad no puede contener los siguientes caracteres: =<>$#{}[]',
 
 	///////////////////////////////////ROLACCIONFUNCIONALIDAD////////////////////////////////////////////
 
@@ -193,96 +195,96 @@ arrayES = {
 
 
 	//generales
-	'SQL_OK': 'SQL_OK',
-	'SQL_KO': 'SQL_KO',
-	'CONEXION_KO': 'CONEXION_KO',
-	'RECORDSET_VACIO': 'RECORDSET_VACIO',
-	'RECORDSET_DATOS': 'RECORDSET_DATOS',
+	'SQL_OK': 'Petición realizada correctamente',
+	'SQL_KO': 'Petición ha sido errónea',
+	'CONEXION_KO': 'Conexión caída',
+	'RECORDSET_VACIO': 'Datos recibidos vacíos',
+	'RECORDSET_DATOS': 'Datos recibidos correctamente',
 
 	// registrar
-	'REGISTRAR_OK': 'REGISTRAR_OK',
-	'CAMBIAR_contrasena_KO': 'CAMBIAR_contrasena_KO',
-	'CAMBIAR_contrasena_OK': 'CAMBIAR_contrasena_OK',
+	'REGISTRAR_OK': 'Registro con éxito',
+	'CAMBIAR_contrasena_KO': 'Error en el cambio de contraseña',
+	'CAMBIAR_contrasena_OK': 'Cambio de contraseña con éxito',
 
 	// login
-	'LOGIN_OK': 'LOGIN_OK',
-	'USUARIO_PASS_KO': 'USUARIO_PASS_KO',
-	'USUARIO_LOGIN_KO': 'USUARIO_LOGIN_KO',
+	'LOGIN_OK': 'Inicio de sesión con éxito',
+	'USUARIO_PASS_KO': 'Contraseña errónea',
+	'USUARIO_LOGIN_KO': 'Usuario no existe',
 
 	// persona
-	'dni_EXISTE_en_persona_KO': 'dni_EXISTE_en_persona_KO',
-	'dni_NO_EXISTE_en_persona_KO': 'dni_NO_EXISTE_en_persona_KO',
+	'dni_EXISTE_en_persona_KO': 'DNI ya existe en la tabla persona',
+	'dni_NO_EXISTE_en_persona_KO': 'DNI no existe en la tabla persona',
 
-	'dni_EXISTE_EN_usuario_KO': 'dni_EXISTE_EN_usuario_KO',
-	'dni_NO_EXISTE_en_usuario_KO': 'dni_NO_EXISTE_en_usuario_KO',
+	'dni_EXISTE_EN_usuario_KO': 'DNI ya existe en la tabla usuario',
+	'dni_NO_EXISTE_en_usuario_KO': 'DNI no existe en la tabla usuario',
 
-	'email_EXISTE_en_persona_KO': 'email_EXISTE_en_persona_KO',
+	'email_EXISTE_en_persona_KO': 'Email ya existe en la tabla persona',
 
-	'add_persona_OK': 'add_persona_OK',
-	'edit_persona_OK': 'edit_persona_OK',
-	'delete_persona_OK': 'delete_persona_OK',
-	'search_persona_OK': 'search_persona_OK',
+	'add_persona_OK': 'Persona añadida con éxito',
+	'edit_persona_OK': 'Persona editada con éxito',
+	'delete_persona_OK': 'Persona eliminada con éxito',
+	'search_persona_OK': 'Búsqueda de personas realizada con éxito',
 
 	// usuario
-	'usuario_EXISTE_en_usuario_KO': 'usuario_EXISTE_EN_usuario_KO',
-	'admin_no_se_puede_modificar_KO': 'admin_no_se_puede_modificar_KO',
-	'admin_no_se_puede_borrar_KO': 'admin_no_se_puede_borrar_KO',
+	'usuario_EXISTE_en_usuario_KO': 'Usuario ya existe en la tabla usuario',
+	'admin_no_se_puede_modificar_KO': 'Admin no se puede modificar',
+	'admin_no_se_puede_borrar_KO': 'Admin no se puede eliminar',
 
-	'add_usuario_OK': 'add_usuario_OK',
-	'edit_usuario_OK': 'edit_usuario_OK',
-	'delete_usuario_OK': 'delete_usuario_OK',
-	'search_usuario_OK': 'search_usuario_OK',
+	'add_usuario_OK': 'Usuario añadido con éxito',
+	'edit_usuario_OK': 'Usuario editado con éxito',
+	'delete_usuario_OK': 'Usuario eliminado con éxito',
+	'search_usuario_OK': 'Búsqueda de usuario realizada con éxito',
 
 	// rol
-	'id_rol_EXISTE_en_usuario_KO': 'id_rol_EXISTE_en_usuario_KO',
-	'no_puede_borrar_rol_adminybasico': 'no_puede_borrar_rol_adminybasico',
-	'no_puede_editar_rol_adminybasico': 'no_puede_editar_rol_adminybasico',
+	'id_rol_EXISTE_en_usuario_KO': 'Rol ya existe en la tabla rol',
+	'no_puede_borrar_rol_adminybasico': 'Rol Admin y Básico no se pueden eliminar',
+	'no_puede_editar_rol_adminybasico': 'Rol Admin y Básico no se pueden modificar',
 
-	'id_rol_EXISTE_en_rol_KO': 'id_rol_EXISTE_en_rol_KO',
-	'id_rol_NO_EXISTE_en_rol_KO': 'id_rol_NO_EXISTE_en_rol_KO',
+	'id_rol_EXISTE_en_rol_KO': 'Rol ya existe en la tabla rol',
+	'id_rol_NO_EXISTE_en_rol_KO': 'Rol no existe en la tabla rol',
 
-	'id_rol_EXISTE_en_rolaccionfuncionalidad_KO': 'id_rol_EXISTE_en_rolaccionfuncionalidad_KO',
+	'id_rol_EXISTE_en_rolaccionfuncionalidad_KO': 'Rol existe en la tabla rol-accion-funcionalidad',
 
 
-	'add_rol_OK': 'add_rol_OK',
-	'edit_rol_OK': 'edit_rol_OK',
-	'delete_rol_OK': 'delete_rol_OK',
-	'search_rol_OK': 'search_rol_OK',
+	'add_rol_OK': 'Rol añadido con éxito',
+	'edit_rol_OK': 'Rol editado con éxito',
+	'delete_rol_OK': 'Rol eliminado con éxito',
+	'search_rol_OK': 'Búsqueda de rol realizada con éxito',
 
 	// accion
-	'id_accion_EXISTE_en_accion_KO': 'id_accion_EXISTE_en_accion_KO',
-	'id_accion_NO_EXISTE_en_accion_KO': 'id_accion_NO_EXISTE_en_accion_KO',
-	'id_accion_EXISTE_en_rolaccionfuncionalidad_KO': 'id_accion_EXISTE_en_rolaccionfuncionalidad_KO',
-	'no_puede_editar_acciones_admin': 'no_puede_editar_acciones_admin',
+	'id_accion_EXISTE_en_accion_KO': 'Acción ya existe en la tabla accion',
+	'id_accion_NO_EXISTE_en_accion_KO': 'Acción no existe en la tabla accion',
+	'id_accion_EXISTE_en_rolaccionfuncionalidad_KO': 'Acción existe en la tabla rol-accion-funcionalidad',
+	'no_puede_editar_acciones_admin': 'Acción Admin no se puede modificar',
 
-	'add_accion_OK': 'add_accion_OK',
-	'edit_accion_OK': 'edit_accion_OK',
-	'delete_accion_OK': 'delete_accion_OK',
-	'search_accion_OK': 'search_accion_OK',
+	'add_accion_OK': 'Acción añadida con éxito',
+	'edit_accion_OK': 'Acción editada con éxito',
+	'delete_accion_OK': 'Acción eliminada con éxito',
+	'search_accion_OK': 'Búsqueda de accion realizada con éxito',
 
 	// funcionalidad
-	'id_funcionalidad_EXISTE_en_funcionalidad_KO': 'id_funcionalidad_EXISTE_en_funcionalidad_KO',
-	'id_funcionalidad_NO_EXISTE_en_funcionalidad_KO': 'id_funcionalidad_NO_EXISTE_en_funcionalidad_KO',
-	'id_funcionalidad_EXISTE_en_rolaccionfuncionalidad_KO': 'id_funcionalidad_EXISTE_en_rolaccionfuncionalidad_KO',
-	'no_puede_editar_funcionalidades_admin': 'no_puede_editar_funcionalidades_admin',
-	'no_puede_borrar_funcionalidades_admin': 'no_puede_borrar_funcionalidades_admin',
+	'id_funcionalidad_EXISTE_en_funcionalidad_KO': 'Funcionalidad ya existe en la tabla funcionalidad',
+	'id_funcionalidad_NO_EXISTE_en_funcionalidad_KO': 'Funcionalidad no existe en la tabla funcionalidad',
+	'id_funcionalidad_EXISTE_en_rolaccionfuncionalidad_KO': 'Funcionalidad existe en la tabla rol-accion-funcionalidad',
+	'no_puede_editar_funcionalidades_admin': 'Funcionalidad Admin no se puede modificar',
+	'no_puede_borrar_funcionalidades_admin': 'Funcionalidad Admin no se puede eliminar',
 
-	'add_funcionalidad_OK': 'add_funcionalidad_OK',
-	'edit_funcionalidad_OK': 'edit_funcionalidad_OK',
-	'delete_funcionalidad_OK': 'delete_funcionalidad_OK',
-	'search_funcionalidad_OK': 'search_funcionalidad_OK',
+	'add_funcionalidad_OK': 'Funcionalidad añadida con éxito',
+	'edit_funcionalidad_OK': 'Funcionalidad editada con éxito',
+	'delete_funcionalidad_OK': 'Funcionalidad eliminada con éxito',
+	'search_funcionalidad_OK': 'Búsqueda de funcionalidad realizada con éxito',
 
 	// rolaccionfuncionalidad
-	'no_puede_borrar_permiso_admin': 'no_puede_borrar_permiso_admin',
-	'no_puede_editar_permiso_admin': 'no_puede_editar_permiso_admin',
-	'permiso_EXISTE_en_rolaccionfuncionalidad_KO': 'permiso_EXISTE_en_rolaccionfuncionalidad_KO',
-	'permiso_NO_EXISTE_en_rolaccionfuncionalidad_KO': 'permiso_NO_EXISTE_en_rolaccionfuncionalidad_KO',
-	'prohibido_edit_rolaccionfuncionalidad': 'prohibido_edit_rolaccionfuncionalidad',
+	'no_puede_borrar_permiso_admin': 'Permiso Admin no se puede eliminar',
+	'no_puede_editar_permiso_admin': 'Permiso admin no se puede modificar',
+	'permiso_EXISTE_en_rolaccionfuncionalidad_KO': 'Permiso ya existe en rol-accion-funcionalidad',
+	'permiso_NO_EXISTE_en_rolaccionfuncionalidad_KO': 'Permiso no existe en rol-accion-funcionalidad',
+	'prohibido_edit_rolaccionfuncionalidad': 'Prohibido editar permisos en rol-accion-funcionalidad',
 
-	'add_rolaccionfuncionalidad_OK': 'add_rolaccionfuncionalidad_OK',
-	'edit_rolaccionfuncionalidad_OK': 'edit_rolaccionfuncionalidad_OK',
-	'delete_rolaccionfuncionalidad_OK': 'delete_rolaccionfuncionalidad_OK',
-	'search_rolaccionfuncionalidad_OK': 'search_rolaccionfuncionalidad_OK',
+	'add_rolaccionfuncionalidad_OK': 'Permiso añadido con éxito',
+	'edit_rolaccionfuncionalidad_OK': 'Permiso editado con éxito',
+	'delete_rolaccionfuncionalidad_OK': 'Permiso eliminado con éxito',
+	'search_rolaccionfuncionalidad_OK': 'Búsqueda de permisos realizada con éxito',
 
 
 
