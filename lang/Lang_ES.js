@@ -3,6 +3,7 @@ arrayES = {
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////acciones///////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	//Codigos acciones
 	'titulo_edit': 'Editar',
 	'titulo_delete': 'Borrar',
@@ -12,35 +13,44 @@ arrayES = {
 
 	'boton_enviar': 'Enviar',
 
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////Códigos FRONT//////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/////////////////////////////////////////INDEX//////////////////////////////////////////////////////
 
+
 	'titulo_index': 'Índice',
 
 
 	/////////////////////////////////////////LOGIN//////////////////////////////////////////////////////
 
+
 	'titulo_login': 'Iniciar Sesión',
 
+
 	/////////////////////////////////////////REGISTRO///////////////////////////////////////////////////
+
 
 	'titulo_registro': 'Registro',
 
 
 	/////////////////////////////////////////CONTRASEÑA/////////////////////////////////////////////////
 
+
 	'titulo_contrasena': 'Cambiar Contraseña',
 
+
 	/////////////////////////////////////////////MENU///////////////////////////////////////////////////
+
 
 	'titulo_menu': 'Menú',
 	'paginas_disponibles': 'Páginas disponibles:',
 
 
 	/////////////////////////////////////////USUARIO////////////////////////////////////////////////////
+
 
 	'titulo_usuario': 'Gestión Usuarios',
 
@@ -56,11 +66,12 @@ arrayES = {
 	'contrasena_largo_ko': 'La contraseña es demasiado larga (Máximo 45 caracteres)',
 	'contrasena_formato_ko': 'La contraseña contiene caracteres no válidos (Se permiten caracteres alfabéticos sin acentos, números, "-" y "_")',
 
-
 	'contrasena_igual_ko': 'Las contraseñas no coinciden',
 
-	/////////////////////////////////////////PERSONA////////////////////////////////////////////////////
 
+	/////////////////////////////////////////PERSONA////////////////////////////////////////////////////
+	
+	
 	'titulo_persona': 'Gestión Personas',
 
 	'dni': 'DNI',
@@ -71,8 +82,6 @@ arrayES = {
 	'telefono_persona': 'Teléfono',
 	'email_persona': 'Email',
 	'foto_persona': 'Foto',
-
-
 
 	//dni
 	'dni_corto_ko': 'Tamaño DNI demasiado corto (8 Números y 1 Letra)',
@@ -123,11 +132,16 @@ arrayES = {
 
 	/////////////////////////////////////////////ROL////////////////////////////////////////////////////
 
+
 	'titulo_rol': 'Gestión Roles',
 
 	'id_rol': 'Identificador',
 	'nombre_rol': 'Nombre',
 	'descrip_rol': 'Descripción',
+
+	//id_rol
+	'id_rol_largo_ko': 'El campo id de rol no puede tener más de 5 números',
+	'id_rol_formato_ko': 'El campo id de rol  debe estar formado por números',
 
 	//nombre
 	'nombre_rol_corto_ko': 'El campo nombre de rol no puede tener menos de 6 caracteres',
@@ -137,11 +151,12 @@ arrayES = {
 	//descrip
 	'descrip_rol_corto_ko': 'La descripción del rol debe tener al menos 20 caracteres',
 	'descrip_rol_largo_ko': 'La descripción del rol debe tener como máximo 200 caracteres',
-	'descrip_rol_caracteres_ko': '‘La descripción del rol no puede contener los siguientes caracteres: =<>$#{}[]',
+	'descrip_rol_caracteres_ko': 'La descripción del rol no puede contener los siguientes caracteres: =<>$#{}[]',
 
 
 
 	/////////////////////////////////////////////ACCION/////////////////////////////////////////////////
+
 
 	'titulo_accion': 'Gestión Acciones',
 
@@ -149,6 +164,10 @@ arrayES = {
 	'nombre_accion': 'Nombre',
 	'descrip_accion': 'Descripción',
 
+
+	//id_accion
+	'id_accion_largo_ko': 'El campo id de acción no puede tener más de 5 números',
+	'id_accion_formato_ko': 'El campo id de acción debe estar formado por números',
 
 	//nombre
 	'nombre_accion_corto_ko': 'El campo nombre de acción no puede tener menos de 6 caracteres',
@@ -169,6 +188,9 @@ arrayES = {
 	'nombre_funcionalidad': 'Nombre',
 	'descrip_funcionalidad': 'Descripción',
 
+	//id_funcionalidad
+	'id_funcionalidad_largo_ko': 'El campo id de funcionalidad no puede tener más de 5 números',
+	'id_funcionalidad_formato_ko': 'El campo id de funcionalidad debe estar formado por números',
 
 	//nombre
 	'nombre_funcionalidad_corto_ko': 'El campo nombre de funcionalidad no puede tener menos de 6 caracteres',
@@ -285,7 +307,5 @@ arrayES = {
 	'edit_rolaccionfuncionalidad_OK': 'Permiso editado con éxito',
 	'delete_rolaccionfuncionalidad_OK': 'Permiso eliminado con éxito',
 	'search_rolaccionfuncionalidad_OK': 'Búsqueda de permisos realizada con éxito',
-
-
 
 }

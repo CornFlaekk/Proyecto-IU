@@ -29,7 +29,22 @@ function comprobar_id_rol(){
 
 
 function comprobar_id_rol_search(){
-	return true;	
+
+	if(document.getElementById('id_id_rol').value == null || document.getElementById('id_id_rol').value == ''){
+		mensajeOK('id_id_rol');
+		return true;
+	}
+	if (!size_maximo('id_id_rol',5)){
+		mensajeKO('id_id_rol', 'id_rol_largo_ko');
+		return false;
+	}
+	if (!solo_numeros('id_id_rol')){
+		mensajeKO('id_id_rol', 'id_rol_formato_ko');
+		return false;
+	}
+
+	mensajeOK('id_id_rol');
+	return true;
 }
 
 

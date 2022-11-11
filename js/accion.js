@@ -31,7 +31,22 @@ function comprobar_id_accion(){
 
 
 function comprobar_id_accion_search(){
-	return true;	
+
+	if(document.getElementById('id_id_accion').value == null || document.getElementById('id_id_accion').value == ''){
+		mensajeOK('id_id_accion');
+		return true;
+	}
+	if (!size_maximo('id_id_accion',5)){
+		mensajeKO('id_id_accion', 'id_accion_largo_ko');
+		return false;
+	}
+	if (!solo_numeros('id_id_accion')){
+		mensajeKO('id_id_accion', 'id_accion_formato_ko');
+		return false;
+	}
+
+	mensajeOK('id_id_accion');
+	return true;
 }
 
 

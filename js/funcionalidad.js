@@ -31,7 +31,22 @@ function comprobar_id_funcionalidad(){
 
 
 function comprobar_id_funcionalidad_search(){
-	return true;	
+
+	if(document.getElementById('id_id_funcionalidad').value == null || document.getElementById('id_id_funcionalidad').value == ''){
+		mensajeOK('id_id_funcionalidad');
+		return true;
+	}
+	if (!size_maximo('id_id_funcionalidad',5)){
+		mensajeKO('id_id_funcionalidad', 'id_funcionalidad_largo_ko');
+		return false;
+	}
+	if (!solo_numeros('id_id_funcionalidad')){
+		mensajeKO('id_id_funcionalidad', 'id_funcionalidad_formato_ko');
+		return false;
+	}
+
+	mensajeOK('id_id_funcionalidad');
+	return true;
 }
 
 
