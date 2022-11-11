@@ -77,11 +77,11 @@ async function SEARCHpersonaDNIajax() {
 
 function getUsuarioDNI(listausuarios) {
 
-    dni = listausuarios[0].dni;
-    document.getElementById('id_dni').textContent = dni;
-	
-	
-
+	for(usuario of listausuarios){
+		if(usuario.usuario == getCookie('usuarioSistema')){
+			document.getElementById('id_dni').textContent = usuario.dni;
+		}
+	}
 }
 
 
