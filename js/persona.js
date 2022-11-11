@@ -1066,7 +1066,7 @@ function getListPersonas(listapersonas){
 		datosfila = "'"+persona.dni+"',"+"'"+persona.nombre_persona+"',"+"'"+persona.apellidos_persona+"',"+"'"+persona.fechaNacimiento_persona+
 		"',"+"'"+persona.direccion_persona+"',"+"'"+persona.telefono_persona+"',"+"'"+persona.email_persona+"',"+"'"+persona.foto_persona+"'";
 
-		lineatabla = '<tr><td>'+persona['dni']+'</td><td>'+persona['nombre_persona']+'</td><td>'+persona['apellidos_persona']+'</td><td>'+persona['fechaNacimiento_persona']+'</td><td>'+persona['direccion_persona']+'</td><td>'+persona['telefono_persona']+'</td><td>'+persona['email_persona']+'</td><td>'+persona['foto_persona']+"</td>";
+		lineatabla = '<tr><td>'+persona['dni']+'</td><td>'+persona['nombre_persona']+'</td><td>'+persona['apellidos_persona']+'</td><td>'+persona['fechaNacimiento_persona']+'</td>';
 
 
 		botonedit = '<td><img class="titulo_edit" src="./images/edit4.png" onclick="crearformEDITpersona('+datosfila+');" width="50" height="50"></td>';
