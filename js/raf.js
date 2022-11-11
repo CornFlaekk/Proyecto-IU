@@ -138,7 +138,7 @@ function crearTablaRafBody(raf) {
                 j++;
                 i++;
             } else {
-                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + roles[j].id_rol + ',' + raf[i-1].id_accion.id_accion + ',' + raf[i-1].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
+                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + roles[j].id_rol + ',' + raf[i].id_accion.id_accion + ',' + raf[i].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
                 datosfila += texto;
                 j++;
             }
