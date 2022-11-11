@@ -132,6 +132,7 @@ arrayES = {
 
 
 	'pagina_raf_wellcome': 'Gestión de Acciones-Funcionalidades para Roles',
+	'rol': 'Rol',
 	'funcionalidad' : 'Funcionalidad',
 	'accion' : 'Accion',
 

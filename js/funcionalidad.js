@@ -54,7 +54,7 @@ async function pintarselectfuncionalidadesAjax(deshabilitado = false, convacio =
 	await devolverfuncionalidadesAjaxPromesa()
 		.then((res) => {
 			let funcionalidad_select = crearselect(convacio,'id_id_funcionalidad','id_funcionalidad', 'id_funcionalidad', 'nombre_funcionalidad', res.resource, funcionalidad);
-			$("#caja_select_funcionalidad").append(funcionalidad_select);
+			$("#caja_select_fun").append(funcionalidad_select);
 			if (deshabilitado){
 				$("#id_id_funcionalidad:not(:selected)").attr('disabled',true);
 			}

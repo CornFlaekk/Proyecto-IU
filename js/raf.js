@@ -138,13 +138,13 @@ function crearTablaRafBody(raf) {
                 j++;
                 i++;
             } else {
-                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + raf[i].id_rol.id_rol + ',' + raf[i].id_accion.id_accion + ',' + raf[i].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
+                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + roles[j].id_rol + ',' + raf[i-1].id_accion.id_accion + ',' + raf[i-1].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
                 datosfila += texto;
                 j++;
             }
         } else {
             for (j; j < roles.length; j++) {
-                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + raf[i].id_rol.id_rol + ',' + raf[i].id_accion.id_accion + ',' + raf[i].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
+                texto = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRafAjax(' + roles[j].id_rol + ',' + raf[i-1].id_accion.id_accion + ',' + raf[i-1].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
                 datosfila += texto;
             }
             datosfila += '</tr>';
@@ -155,6 +155,15 @@ function crearTablaRafBody(raf) {
             accPrev = raf[i].id_accion.id_accion;
         }
     }
+
+    while (j < roles.length) {
+        textos = '<td>' + '<img src="./images/mas.png" width="20" height="20" onclick="ADDRa'+'fAjax(' + roles[j].id_rol + ',' + raf[i-1].id_accion.id_accion + ',' + raf[i-1].id_funcionalidad.id_funcionalidad + ');">' + '<b>&emsp;</b>' + '<img src="./images/menos_gris.png" width="20" height="20">' + '</td>';
+        datosfila += textos;
+        j++;
+    }
+    datosfila += '</tr>';
+    $("#id_datosraf").append(datosfila);
+    //datosfila = '<tr><td>' + raf[i].id_funcionalidad.nombre_funcionalidad + '</td><td>' + raf[i].id_accion.nombre_accion + '</td>';
 }
 
 
@@ -177,11 +186,9 @@ function ADDRafAjaxPromesa(id_rol, id_accion, id_funcionalidad) {
             data: $("#form_generico").serialize(),
         }).done(res => {
             if (res.ok != true) {
-                alert('res.ok != true');
                 reject(res);
             }
             else {
-                alert('res.ok == true');
                 resolve(res);
             }
         })
@@ -208,7 +215,6 @@ async function ADDRafAjax(id_rol, id_accion, id_funcionalidad) {
             mensajeactionOK(res.code);
         })
         .catch((res) => {
-            alert('.catch');
             mensajeFAIL(res.code);
         });
     setLang();
@@ -236,11 +242,9 @@ function DELETERafAjaxPromesa(id_rol, id_accion, id_funcionalidad) {
             data: $("#form_generico").serialize(),
         }).done(res => {
             if (res.ok != true) {
-                alert('res.ok != true');
                 reject(res);
             }
             else {
-                alert('res.ok == true');
                 resolve(res);
             }
         })
@@ -267,7 +271,6 @@ async function DELETERafAjax(id_rol, id_accion, id_funcionalidad) {
             mensajeactionOK(res.code);
         })
         .catch((res) => {
-            alert('.catch');
             mensajeFAIL(res.code);
         });
     setLang();
@@ -332,12 +335,12 @@ function crearformSEARCHraf() {
 	resetearformraf();
 
 	// se rellena el action del formulario
-	document.getElementById('id_form_raf').action = 'javascript:SEARCHRafAjax()';
+	document.getElementById('id_form_raf').action = 'javascript:crearTablaRafSEARCH()';
 
 	// se invoca una función que crea el select de roles desde datos del back
-	pintarselectrolesAjax(false, false, '');
-    pintarselectfuncionalidadesAjax(false, false, '');
-    pintarselectaccionesAjax(false, false, '');
+	pintarselectrolesAjax(false, true, '');
+    pintarselectfuncionalidadesAjax(false, true, '');
+    pintarselectaccionesAjax(false, true, '');
 
 
 	// se coloca una imagen para la accion de editar
@@ -349,7 +352,7 @@ function crearformSEARCHraf() {
 	imagenenviarform.className = 'titulo_search';
 	document.body.appendChild(imagenenviarform);
 	// se coloca una función onclick que hará las comprobaciones y el submit
-	document.getElementById('id_imagen_enviar_form').onclick = SEARCHRafAjax;
+	document.getElementById('id_imagen_enviar_form').onclick = crearTablaRafSEARCH;
 
 	// para actualizar idioma despues de incluir la imagen
 	setLang();
@@ -365,11 +368,11 @@ function crearformSEARCHraf() {
 function SEARCHrafAjaxPromesa(){
 
 	crearformoculto('form_generico','');
-	insertacampo('form_generico','controlador', 'rol');
+	insertacampo('form_generico','controlador', 'rolaccionfuncionalidad');
 	insertacampo('form_generico','action', 'SEARCH');
 	insertacampo('form_generico','id_rol', document.getElementById('id_id_rol').value);
-	insertacampo('form_generico','nombre_rol', document.getElementById('id_nombre_rol').value);
-	insertacampo('form_generico','descrip_rol', document.getElementById('id_descrip_rol').value);
+	insertacampo('form_generico','id_funcionalidad', document.getElementById('id_id_funcionalidad').value);
+	insertacampo('form_generico','id_accion', document.getElementById('id_id_accion').value);
 
 	return new Promise(function(resolve, reject) {
 		$.ajax({
@@ -405,7 +408,6 @@ async function SEARCHRafAjax() {
             crearTablaRafBody(res.resource);
 		})
 		.catch((res) => {
-			alert('.catch');
 			mensajeFAIL(res.code);
 		});
 		setLang();
@@ -415,8 +417,8 @@ async function SEARCHRafAjax() {
 
 
 function crearTablaRafSEARCH() {
-    document.getElementById('id_datostabla').innerHTML = "";
-    document.getElementById('id_datosraf').innerHTML = "";
+    document.getElementById('id_datostabla').innerHTML = '';
+    document.getElementById('id_datosraf').innerHTML = '';
     devolverrolesajaxRaf();
     SEARCHRafAjax();
 }

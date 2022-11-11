@@ -54,7 +54,7 @@ async function pintarselectaccionesAjax(deshabilitado = false, convacio = false,
 	await devolveraccionesAjaxPromesa()
 		.then((res) => {
 			let accion_select = crearselect(convacio,'id_id_accion','id_accion', 'id_accion', 'nombre_accion', res.resource, accion);
-			$("#caja_select_accion").append(accion_select);
+			$("#caja_select_acc").append(accion_select);
 			if (deshabilitado){
 				$("#id_id_accion:not(:selected)").attr('disabled',true);
 			}

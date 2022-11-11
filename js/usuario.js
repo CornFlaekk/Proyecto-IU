@@ -84,45 +84,6 @@ function comprobar_id_rol_search() {
 }
 
 
-// crearselect(
-//convacio para añadir un elemento vacío o no
-// id que va tener el select, 
-// name que va tener el select, 
-// atributo del array datos que utilizamos para el value de cada option, 
-// atributo del array datos que vamos utilizar para el text de cada option, 
-// array de datos con las filas de la entidad, 
-// value que queremos que este como selected en el select)
-// devuelve un elemento select
-function crearselect(convacio, id, name, valueoption, textoption, datos, itemseleccionado) {
-
-	rol_select = document.createElement("select");
-	rol_select.name = name;
-	rol_select.id = id;
-
-	if (convacio) {
-		option_rol = document.createElement("option");
-		option_rol.value = '';
-		option_rol.text = '';
-		option_rol.selected = true;
-		rol_select.appendChild(option_rol);
-	}
-
-	for (let i = 0; i < datos.length; i++) {
-		option_rol = document.createElement("option");
-		option_rol.value = datos[i][valueoption];
-		option_rol.text = datos[i][textoption];
-
-		if (option_rol.value == itemseleccionado) {
-			option_rol.selected = true;
-		}
-		rol_select.appendChild(option_rol);
-	}
-
-	return rol_select;
-
-}
-
-
 
 // add_usuario()
 // funcion a ser ejecutada cuando se completa el formulario al pulsar sobre la imagen
