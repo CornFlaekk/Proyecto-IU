@@ -1,5 +1,5 @@
 //Función ajax con promesas
-function devolverrolesAjaxPromesa() {
+function devolverrolesAjaxRafPromesa() {
 
     crearformoculto('form_devolver_roles', '');
     insertacampo('form_devolver_roles', 'controlador', 'rol');
@@ -24,11 +24,11 @@ function devolverrolesAjaxPromesa() {
     });
 }
 
-async function devolverrolesajax() {
+async function devolverrolesajaxRaf() {
 
     var idioma = getCookie('lang');
 
-    await devolverrolesAjaxPromesa()
+    await devolverrolesAjaxRafPromesa()
         .then((res) => {
             crearTablaRafHead(res.resource);
 
@@ -64,7 +64,7 @@ function crearTablaRafHead(data) {
 function crearTablaRaf() {
     document.getElementById('id_datostabla').innerHTML = "";
     document.getElementById('id_datosraf').innerHTML = "";
-    devolverrolesajax();
+    devolverrolesajaxRaf();
     devolverRafAjax();
 }
 
@@ -274,3 +274,149 @@ async function DELETERafAjax(id_rol, id_accion, id_funcionalidad) {
     document.getElementById('form_generico').remove();
 }
 
+
+
+
+function resetearformraf() {
+
+	// eliminar el select
+	selectviejorol = document.getElementById('id_id_rol');
+	if (!(selectviejorol === null)) {
+		document.getElementById('caja_select_rol').removeChild(selectviejorol);
+	}
+
+    selectviejorol = document.getElementById('id_id_funcionalidad');
+	if (!(selectviejorol === null)) {
+		document.getElementById('caja_select_funcionalidad').removeChild(selectviejorol);
+	}
+
+    selectviejorol = document.getElementById('id_id_accion');
+	if (!(selectviejorol === null)) {
+		document.getElementById('caja_select_accion').removeChild(selectviejorol);
+	}
+
+	$("#id_id_rol").attr('readonly', false);
+	$("#id_id_rol").val('');
+	$("#id_id_rol").on('blur', false);
+
+    $("#id_id_funcionalidad").attr('readonly', false);
+	$("#id_id_funcionalidad").val('');
+	$("#id_id_funcionalidad").on('blur', false);
+
+    $("#id_id_accion").attr('readonly', false);
+	$("#id_id_accion").val('');
+	$("#id_id_accion").on('blur', false);
+
+	// eliminar el boton de submit de formulario
+	$("#id_boton_buscar_usuario").remove();
+
+	// eliminar la imagen para terminar el formulario
+	$("#id_imagen_enviar_form").remove();
+
+	// eliminar el button para submit el formulario de search
+	$("#id_accionsubmit").remove();
+
+	// se pone visible el formulario
+	$("#id_caja_formulario_usuario").attr('style', 'display: none');
+
+	setLang();
+
+}
+
+
+
+
+function crearformSEARCHraf() {
+
+	// resetear el formulario
+	resetearformraf();
+
+	// se rellena el action del formulario
+	document.getElementById('id_form_raf').action = 'javascript:SEARCHRafAjax()';
+
+	// se invoca una función que crea el select de roles desde datos del back
+	pintarselectrolesAjax(false, false, '');
+    pintarselectfuncionalidadesAjax(false, false, '');
+    pintarselectaccionesAjax(false, false, '');
+
+
+	// se coloca una imagen para la accion de editar
+	imagenenviarform = document.createElement("img");
+	imagenenviarform.src = "./images/search4.png";
+	imagenenviarform.id = "id_imagen_enviar_form";
+	imagenenviarform.width = '80';
+	imagenenviarform.height = '80';
+	imagenenviarform.className = 'titulo_search';
+	document.body.appendChild(imagenenviarform);
+	// se coloca una función onclick que hará las comprobaciones y el submit
+	document.getElementById('id_imagen_enviar_form').onclick = SEARCHRafAjax;
+
+	// para actualizar idioma despues de incluir la imagen
+	setLang();
+
+	// se muestra el formulario
+	document.getElementById('id_caja_formulario_raf').style.display = 'block';
+
+}
+
+
+
+//Función ajax con promesas
+function SEARCHrafAjaxPromesa(){
+
+	crearformoculto('form_generico','');
+	insertacampo('form_generico','controlador', 'rol');
+	insertacampo('form_generico','action', 'SEARCH');
+	insertacampo('form_generico','id_rol', document.getElementById('id_id_rol').value);
+	insertacampo('form_generico','nombre_rol', document.getElementById('id_nombre_rol').value);
+	insertacampo('form_generico','descrip_rol', document.getElementById('id_descrip_rol').value);
+
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			method: "POST",
+			url: "http://193.147.87.202/Back/index.php",
+			data: $("#form_generico").serialize(),
+		}).done(res => {
+			if (res.ok != true) {
+				reject(res);
+			}
+			else{
+				resolve(res);
+			}
+		})
+		.fail( function( jqXHR ) {
+			alert('fail!!!:' + jqXHR.status);
+			mensajeHTTPFAIL(jqXHR.status);
+		});
+	}
+	)
+}
+
+
+async function SEARCHRafAjax() {
+	
+	var idioma = getCookie('lang');
+	
+	await SEARCHrafAjaxPromesa()
+		.then((res) => {
+			
+			if (res.code = 'SQL_OK'){
+				res.code = 'search_rolaccionfuncionalidad_OK';	}
+            crearTablaRafBody(res.resource);
+		})
+		.catch((res) => {
+			alert('.catch');
+			mensajeFAIL(res.code);
+		});
+		setLang();
+		document.getElementById('form_generico').remove();
+}
+
+
+
+function crearTablaRafSEARCH() {
+    document.getElementById('id_datostabla').innerHTML = "";
+    document.getElementById('id_datosraf').innerHTML = "";
+    devolverrolesajaxRaf();
+    SEARCHRafAjax();
+}

@@ -5,6 +5,9 @@
     <title>Gestión Rol Acción Funcionalidad</title>
     <script type="text/javascript" src="./js/persona.js"></script>
     <script type="text/javascript" src="./js/raf.js"></script>
+    <script type="text/javascript" src="./js/rol.js"></script>
+    <script type="text/javascript" src="./js/funcionalidad.js"></script>
+    <script type="text/javascript" src="./js/accion.js"></script>
     <script type="text/javascript" src="./lang/idioma.js"></script>
     <script type="text/javascript" src="./lang/Lang_ES.js"></script>
     <script type="text/javascript" src="./lang/Lang_EN.js"></script>
@@ -18,6 +21,7 @@
     </div>
     <h1 class="pagina_raf_wellcome"></h1>
     <a href="menu.html"><p class='titulo_volver'></p></a><br>
+    <img class='titulo_search' src='./images/search4.png' height="60" width="60" onclick="crearformSEARCHraf();">
     <div id='id_caja_error'>
       <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20" onclick="cerrarMensajeError();"/>
     </div>
@@ -28,6 +32,19 @@
         <tbody id='id_datosraf'>
         </tbody>
       </table>
+    </div>
+    <div id='id_caja_formulario_raf'>
+      <form id='id_form_raf' name='form_raf' method='post'>
+  
+        <div id="caja_select_rol"><label class="id_rol"></label></div>
+        <div id="caja_select_fun"><label class="id_funcionalidad"></label></div>
+        <div id="caja_select_acc"><label class="id_accion"></label></div>
+
+
+  
+      </form>
+      <br>
+        <img src='' height="80" width="80" id="id_imagen_enviar_form" name="imagen_enviar_form">
     </div>
   </body>
 </html>
