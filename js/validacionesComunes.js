@@ -53,6 +53,10 @@ function ponerinvisibleformrol(){
 	document.getElementById('id_caja_formulario_rol').style.display = 'none';
 }
 
+function ponerinvisibleformaccion(){
+	document.getElementById('id_caja_formulario_accion').style.display = 'none';
+}
+
 function ponerinvisibleformraf(){
 	document.getElementById('id_caja_formulario_raf').style.display = 'none';
 }

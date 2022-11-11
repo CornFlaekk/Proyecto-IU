@@ -127,7 +127,7 @@ arrayES = {
 	'descrip_rol': 'Descripción',
 
 	//nombre
-	'nombre_rol_corto_ko' : 'nombre_rol_corto_ko',
+	'nombre_rol_corto_ko': 'nombre_rol_corto_ko',
 	'nombre_rol_largo_ko': 'nombre_rol_largo_ko',
 	'nombre_rol_formato_ko': 'nombre_rol_formato_ko',
 
@@ -137,13 +137,34 @@ arrayES = {
 	'descrip_rol_caracteres_ko': 'descrip_rol_caracteres_ko',
 
 
+
+	/////////////////////////////////////////////ACCION/////////////////////////////////////////////////
+
+	'titulo_accion': 'Gestión Acciones',
+
+	'id_accion': 'Identificador',
+	'nombre_accion': 'Nombre',
+	'descrip_accion': 'Descripción',
+
+
+	//nombre
+	'nombre_accion_corto_ko': 'nombre_accion_corto_ko',
+	'nombre_accion_largo_ko': 'nombre_accion_largo_ko',
+	'nombre_accion_formato_ko': 'nombre_accion_formato_ko',
+
+	//descrip
+	'descrip_accion_corto_ko': 'descrip_accion_corto_ko',
+	'descrip_accion_largo_ko': 'descrip_accion_largo_ko',
+	'descrip_accion_caracteres_ko': 'descrip_accion_caracteres_ko',
+
+
 	///////////////////////////////////ROLACCIONFUNCIONALIDAD////////////////////////////////////////////
 
 
 	'titulo_rolaccionfuncionalidad': 'Gestión Rol-Acción-Funcionalidad',
 	'rol': 'Rol',
-	'funcionalidad' : 'Funcionalidad',
-	'accion' : 'Accion',
+	'funcionalidad': 'Funcionalidad',
+	'accion': 'Accion',
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////

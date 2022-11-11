@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title class="titulo_accion"></title>
+    <script type="text/javascript" src="./js/accion.js"></script>
+    <script type="text/javascript" src="./lang/idioma.js"></script>
+    <script type="text/javascript" src="./lang/Lang_ES.js"></script>
+    <script type="text/javascript" src="./lang/Lang_EN.js"></script>
+    <script type="text/javascript" src="./lang/Lang_GA.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+  </head>
+  <body onload="ponerinvisibleerror();ponerinvisibleformaccion();devolveraccionesajax();setLang();incluircabecera();">
+    <div id='id_caja_superior'>
+    </div>
+    <h1 class="titulo_accion"></h1>
+    <a href="menu.html"><p class='titulo_volver'></p></a><br>
+    <div id='id_caja_error'>
+      <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20" onclick="cerrarMensajeError();"/>
+    </div>
+    <img class='titulo_add' src='./images/add4.png' height="80" width="80" onclick="crearformADDaccion();">
+    <img class='titulo_search' src='./images/search4.png' height="60" width="60" onclick="crearformSEARCHaccion();">
+    <div>
+      <table id='id_tablaAcciones' border='1'>
+        <th class="id_accion">
+        </th>
+        <th class="nombre_accion">
+        </th>
+        <th class="descrip_accion">
+        </th>
+        <th class="titulo_edit">
+        </th>
+        <th class="titulo_delete">
+        </th>
+        <th class="titulo_showcurrent">
+        </th>
+      </thead>
+      <tbody id='id_datosacciones'>
+      </tbody>
+    </table>
+  </div>
+  <div id='id_caja_formulario_accion'>
+    <form id='id_form_accion' name='form_accion' method='post'>
+
+      <label class='id_accion' id="id_id_accion_label"></label>
+      <input class="text_formato_id_accion" type='text' id='id_id_accion' name='id_accion' placeholder=""></input>
+      <br>
+      <label class="nombre_accion"></label>
+      <input class="text_formato_nombre_accion" type='text' id='id_nombre_accion' name='nombre_accion'></input>
+      <br>
+      <label class="descrip_accion"></label>
+      <input class="text_formato_descrip_accion" type='text' id='id_descrip_accion' name='descrip_accion'></input>
+      <br>
+
+    </form>
+    <br>
+      <img src='' height="80" width="80" id="id_imagen_enviar_form" name="imagen_enviar_form">
+  </div>
+</body>
+</html>
