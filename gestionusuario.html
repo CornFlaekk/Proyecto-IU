@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Gestión Usuario</title>
+    <title class="titulo_usuario"></title>
     <script type="text/javascript" src="./js/usuario.js"></script>
      <script type="text/javascript" src="./js/persona.js"></script> <!--para comprobar DNI -->
     <script type="text/javascript" src="./js/rol.js"></script>
@@ -17,7 +17,7 @@
   <body onload="ponerinvisibleerror();ponerinvisibleformusuario();devolverusuariosajax();setLang();incluircabecera();">
     <div id='id_caja_superior'>
     </div>
-    <h1 class="pagina_usuario_wellcome"></h1>
+    <h1 class="titulo_usuario"></h1>
     <a href="menu.html"><p class='titulo_volver'></p></a><br>
     <div id='id_caja_error'>
       <div id='id_texterror'></div><img src="./images/cerrar.png" width="20" height="20" onclick="cerrarMensajeError();"/>
@@ -53,7 +53,7 @@
         <label class="usuario"></label>
         <input class="text_formato_usuario" type='text' id='id_usuario' name='usuario'></input>
         <br>
-        <div id="caja_select_rol"><label class="id_rol"></label></div>
+        <div id="caja_select_rol"><label class="rol"></label><b>&nbsp;</b></div>
         
       </form>
       <br>

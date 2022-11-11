@@ -4,7 +4,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Menú</title>
+    <title class="titulo_menu"></title>
     <script type="text/javascript" src="./js/persona.js"></script>
     <script type="text/javascript" src="./lang/idioma.js"></script>
     <script type="text/javascript" src="./lang/Lang_ES.js"></script>
@@ -15,18 +15,18 @@
     <script type="text/javascript" src="./js/md5.js"></script>
 </head>
 
-<body onload="incluircabecera();">
+<body onload="incluircabecera();setLang();">
     <div id='id_caja_superior'>
     </div>
-    <h1>Menú</h1>
-    <p>Páginas disponibles:</p>
+    <h1 class="titulo_menu"></h1>
+    <p class="paginas_disponibles"></p>
 
     <ul>
-        <li><a href="gestionpesona.html">Gestión Personas</a></li>
-        <li><a href="gestionusuario.html">Gestión Usuarios</a></li>
-        <li><a href="gestionrol.html">Gestión Roles</a></li>
+        <li><a href="gestionpesona.html" class="titulo_persona"></a></li><br>
+        <li><a href="gestionusuario.html" class="titulo_usuario"></a></li><br>
+        <li><a href="gestionrol.html" class="titulo_rol"></a></li><br>
 
-        <li><a href="gestionraf.html">Gestión RolAccionFuncionalidad</a></li>
+        <li><a href="gestionraf.html" class="titulo_rolaccionfuncionalidad"></a></li>
     </ul>
 
 
