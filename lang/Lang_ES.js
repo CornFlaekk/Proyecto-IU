@@ -209,7 +209,7 @@ arrayES = {
 	'titulo_rolaccionfuncionalidad': 'Gestión Rol-Acción-Funcionalidad',
 	'rol': 'Rol',
 	'funcionalidad': 'Funcionalidad',
-	'accion': 'Accion',
+	'accion': 'Acción',
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
