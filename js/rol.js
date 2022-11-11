@@ -2,8 +2,6 @@
 // funcion para validar el submit del formulario rol para las acciones que no sean search
 
 function comprobar_form_rol_add(){
-	alert('entro en comprobar_form_rol_add');
-
 	if (comprobar_id_rol() && comprobar_nombre_rol() && comprobar_descrip_rol()){
 		return true;
 	}
@@ -14,9 +12,7 @@ function comprobar_form_rol_add(){
 
 // comprobar_form_rol_search()
 // funcion para validar el submit del formulario de rol para la accion search
-function comprobar_form_rol_search(){
-	alert('entro en comprobar_form_rol_search');
-	
+function comprobar_form_rol_search(){	
 	if (comprobar_id_rol_search() && comprobar_nombre_rol_search() && comprobar_descrip_rol_search() ){
 		return true;
 	}
@@ -586,7 +582,6 @@ async function SEARCHrolajax() {
 			mensajeactionOK(res.code);
 		})
 		.catch((res) => {
-			alert('.catch');
 			mensajeFAIL(res.code);
 		});
 		setLang();
@@ -675,7 +670,6 @@ async function pintarselectrolesAjax(deshabilitado = false, convacio = false, ro
 		
 		})
 		.catch((res) => {
-            alert(res.rescode);
 			mensajeFAIL(res.code);
         	setLang(idioma);
 		});

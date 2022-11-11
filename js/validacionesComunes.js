@@ -63,6 +63,7 @@ function ponerinvisibleformfuncionalidad(){
 
 function ponerinvisibleformraf(){
 	document.getElementById('id_caja_formulario_raf').style.display = 'none';
+	document.getElementById('id_imagen_enviar_form').style.display = 'none';
 }
 
 
@@ -79,7 +80,7 @@ function mensajeOK(idElemento){
 
 	document.getElementById('id_texterror').innerHTML = '';
 	document.getElementById('id_caja_error').style.display = 'none';
-	document.getElementById(idElemento).style.borderColor = "#90C8AC";
+	document.getElementById(idElemento).style.borderColor = "#71af85";
 	setLang();
 }
 
@@ -116,7 +117,7 @@ function mensajeactionOK(codigo){
 	cerrarMensajeError();
 	document.getElementById('id_texterror').classList.add(codigo);
 	//document.getElementById('id_caja_error').style.borderColor = "#00e600"; 
-	document.getElementById('id_caja_error').style = "color: #90C8AC";
+	document.getElementById('id_caja_error').style = "color: #71af85";
 	document.getElementById('id_caja_error').style.display = 'block';
 	setLang();
 

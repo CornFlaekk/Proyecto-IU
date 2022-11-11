@@ -2,8 +2,6 @@
 // funcion para validar el submit del formulario usuario para las acciones que no sean search
 
 function comprobar_form_usuario_add() {
-	alert('entro en comprobar_form_usuario_add');
-
 	if (comprobar_dni() && comprobar_usuario() && comprobar_id_rol()) {
 		return true;
 	}
@@ -15,7 +13,6 @@ function comprobar_form_usuario_add() {
 // comprobar_form_usuario_search()
 // funcion para validar el submit del formulario de usuario para la accion search
 function comprobar_form_usuario_search() {
-	alert('entro en comprobar_form_usuario_search');
 
 	if (comprobar_dni_search() && comprobar_usuario_search() && comprobar_id_rol_search()) {
 		return true;
@@ -497,7 +494,6 @@ function usuarioSEARCHAjaxPromesa() {
 	insertacampo('form_generico', 'action', 'SEARCH');
 	insertacampo('form_generico','dni', document.getElementById('id_dni').value);
 	insertacampo('form_generico','usuario', document.getElementById('id_usuario').value);
-	alert(document.getElementById('id_id_rol').value);
 	insertacampo('form_generico','id_rol', document.getElementById('id_id_rol').value);
 
 	return new Promise(function (resolve, reject) {

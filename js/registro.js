@@ -1,3 +1,21 @@
+function comprobar_contrasena_igual(){
+    c1 = document.getElementById('id_contrasena').value;
+    c2 = document.getElementById('id_contrasena_repetir').value;
+
+    if(c1 != c2){
+        mensajeKO('id_contrasena_repetir','contrasena_igual_ko');
+        return false;
+    }else{
+        mensajeOK('id_contrasena_repetir');
+        return true;
+    }
+}
+
+
+
+
+
+
 // comprobar_contrasena()
 // funcion de validación de formato de contrasena en acciones que no sean search
 function comprobar_contrasena() {
