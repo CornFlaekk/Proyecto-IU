@@ -380,7 +380,7 @@ function rolEDITAjaxPromesa(){
 			url: "http://193.147.87.202/Back/index.php",
 			data: $("#id_form_rol").serialize(),
 		}).done(res => {
-			if (res.ok != true) {
+			if (res.ok !== true) {
 				reject(res);
 			}
 			else{
@@ -399,8 +399,8 @@ async function EDITrolajax() {
 
 	await rolEDITAjaxPromesa()
 		.then((res) => {
-			devolverrolsajax();
-			if (res.code = 'SQL_OK'){
+			devolverrolesajax();
+			if (res.code == 'SQL_OK'){
 				res.code = 'edit_rol_OK';
 			}
 			mensajeactionOK(res.code);
